@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Moudle1（学习周期2周） | Shley8&#39;s Blogs</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1601953906110">
+<link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="主要内容：本章主要介绍计算机的基础知识（计算机发展历史、操作系统的发展历史、服务器的基础知识等），以及Linux（Gun/Linux）操作系统的安装。
+计算机的发展历史
+计算机的主要功能就是做计算，早期计算机（其实可以称为计算器）是机械计算..." />
+    <meta name="keywords" content="RHCE" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://shley8.github.io">
+        <img src="https://shley8.github.io/images/avatar.png?v=1601953906110" class="site-logo">
+        <h1 class="site-title">Shley8&#39;s Blogs</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      宛若新生
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/Shley8" target="_blank">Shley8</a> | <a class="rss" href="https://shley8.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Moudle1（学习周期2周）</h2>
+            <div class="post-date">2020-10-06</div>
+            
+            <div class="post-content" v-pre>
+              <p><strong>主要内容：本章主要介绍计算机的基础知识（计算机发展历史、操作系统的发展历史、服务器的基础知识等），以及Linux（Gun/Linux）操作系统的安装。</strong></p>
+<h2 id="计算机的发展历史">计算机的发展历史</h2>
+<p>计算机的主要功能就是做计算，早期计算机（其实可以称为计算器）是机械计算机，用户输入数据，输入运算符（加减乘除），随后计算机进行计算，输出结果；后来随着电子管的出现，出现了电子计算机（这时候的计算机才是能通电的）；再后来随着晶体管的出现，出现了晶体管计算机，晶体管计算机的出现使得计算机的性能有了飞速的增长（目前的计算机都是集成电路计算机，而集成电路组成的基本单元就是晶体管）。</p>
+<h2 id="操作系统的发展历史">操作系统的发展历史</h2>
+<p>早期人们将“把数据输入到计算机—输入运算符—计算机进行运算—输出运算结果”这套流程叫做OS（Operation System，操作系统），因为早期的“操作系统”的整个流程都是需要“人”去进行操作的，后来人们就想“能不能让计算机自己去处理这些事情”，于是乎操作系统的概念就有了：操作系统是位于计算机硬件之上管理计算机硬件的一组软件，它可以让计算机自动完成输入运算输出的功能，从而让“人”解放出来。<br>
+操作系统的发展阶段主要分为：</p>
+<ul>
+<li>手工操作系统；</li>
+<li>批处理系统；</li>
+<li>多道程序系统；</li>
+<li>分时系统；</li>
+<li>实时系统；</li>
+<li>通用操作系统；</li>
+</ul>
+<p>接下来对它们分别做一下简单的介绍：</p>
+<ul>
+<li>手工操作系统：“人”需要亲自动手去让计算机计算；</li>
+<li>批处理操作系统：计算机的运算开始实现自动化，但是一时间只能运行一个作业（Job）；</li>
+<li>多道程序系统：计算机在A作业完成之后可以进行B作业，而不用等待I/O设备的输入，增加了CPU的利用率；</li>
+<li>分时系统：多个终端使用一台计算机，增加CPU的利用率；</li>
+<li>实习系统：应用于某些需要计算机实时处理数据的场景（导弹系统、机票系统）；</li>
+<li>通用操作系统：多道程序、分时以及实时操作系统多种的结合体；<br>
+其实贯穿操作系统发展始终的一直“快速”以及“慢速”之间的矛盾，我们都知道，计算机的CPU的计算速度是比较快的，而输入输出设备（Input Output Device）和存储读写速度是比较慢的，所以操作系统发展的始终是基于提高CPU的利用率而进行的。</li>
+</ul>
+<h2 id="几款主流的操作系统">几款主流的操作系统</h2>
+<h3 id="unix">Unix</h3>
+<p>Unix是第一个比较出名的操作系统，而且使用的人群也很广，但是后来因为版权的问题，使得Unix的操作性系统的推广受到了一定的阻碍，目前使用人群不是很多，而且，这款操作系统是需要收费的。<br>
+代表产品：HP-UX，IBM-AIX。</p>
+<h3 id="linux">Linux</h3>
+<p>免费开源的操作系统，而且发展的很迅速，顺带提一下，Linux只是一个内核，不是操作系统，Gnu/Linux才是Linux的真名字，而且Gun是有自己的内核的，不过使用Linux内核成为了主流。<br>
+Gun（GNU is Not Unix）是一个号召全世界的开发人员从事软件开源的一个计划。<br>
+代表产品：Fedora，CentOS，Ubuntu，OpenSuSE，RHEL（Red Hat Enterprise Linux）。</p>
+<h3 id="mac-os">Mac OS</h3>
+<p>Unix的变种（分支）。<br>
+代表作品：笔者没用过，计划有机会换一台😂。</p>
+<h3 id="windows">Windows</h3>
+<p>Unix的官司给Windows和Mac OS提供了一个非常好的发展背景，Winodws用户主要集中在个人用户，<br>
+代表产品：Win 7，Win10，Windows Server *。</p>
+<h2 id="计算机硬件组成">计算机硬件组成</h2>
+<p>主板、CPU、存储、输入输出设备、网卡、显卡、声卡 and 等等。<br>
+这里主要说一下CPU和存储：</p>
+<ul>
+<li>CPU（Central Processing Unit，中央处理器），计算机的核心之一，内部分为三个单元，逻辑控制单元，逻辑运算单元，存储（寄存器，L1 cache，L2 cache，L3 cache），性能主要是三个指标：主频数（计算速度的快慢）、核心数（能同时进行计算的多少）、存储大小（读写输入的快慢，记得我们前面说过，CPU运算是比较快的，而从存储里面读写数据是比较慢的）。</li>
+<li>存储：读写速度从快到慢，容量从小到大排列为：寄存器，L1 cache，L2 cache，L3 cache，内存，硬盘。</li>
+</ul>
+<h2 id="常见的服务器分类">常见的服务器分类</h2>
+<p>常见的服务器主要分为三种：</p>
+<ul>
+<li>塔式服务器；</li>
+<li>机架式服务器；</li>
+<li>刀片式服务器。</li>
+</ul>
+<p>以及一些小知识：</p>
+<ul>
+<li>数据中心的电源一般都是两个，两个电源分别接入不同的发电站，确保服务器不会因为缺电停止工作（部分会采用UPS电源，即使断电，短时间内服务器还会继续运行，类似于电池）。<br>
+针对某些读/写操作比较大的业务情况（如百度的原理即用户输入想要的内容，百度从自己的数据库中读内容，然后返回给用户；微信红包则是写入的情况），公司的服务器会采用缓存/缓冲技术来应对（从内存中读取数据/从在内存中写入数据）。</li>
+</ul>
+<h2 id="如何安装操作系统windows">如何安装操作系统（Windows）</h2>
+<p>准备工作：一台需要安装操作系统的主机、ISO文件、U盘（大小合适，8G即可）、软碟通软件。<br>
+操作步骤：将ISO文件通过软碟通进行考录，制作一个用于装机的U盘，进入计算机的BIOS界面，用此U盘进行操作系统的安装即可（BIOS界面根据自己电脑的不同，进入方式也不同，通常在计算机重启时按F1~12即可进入）。</p>
+<h2 id="所思所想">所思所想</h2>
+<h3 id="怎么问问题">怎么问问题？</h3>
+<p>学习每一种课程之前，讲课老师都会说到这个问题，问问题也是有学问的，不好的提问方式，不仅不能让自己的疑问无法解决，而且还会让解题者不舒服，吾日三省吾身，想想自己也是有这个问题，在这里写一下，问问题需要注意的三个点：</p>
+<ul>
+<li>什么情况下碰到的问题（是什么）;</li>
+<li>“我”的解决方法是什么;</li>
+<li>碰到的什么问题.</li>
+</ul>
+<h2 id="学习过程记录">学习过程记录</h2>
+<p>想了想把每天学习的进度写上来也是不错的，每天进步一点点👍👍</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://shley8.github.io/tag/RHCE/" class="tag">
+                    RHCE
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://shley8.github.io/post/rhcered-hat-certified-engineerxue-xi-guo-cheng-ji-lu/">
+                  <h3 class="post-title">
+                    RHCE（Red Hat Certified Engineer）学习过程记录
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
