@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-07T09:50:21.737Z</updated>
+    <updated>2020-10-08T07:24:39.392Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -101,11 +101,15 @@ Gun（GNU is Not Unix）是一个号召全世界的开发人员从事软件开�
 <li>VMware Workstation链接克隆的本质就是快照（相对的是完整克隆）；</li>
 <li>VMware Workstation静态快照和动态快照（自己思考）；</li>
 <li>CentOS和RHEL差不多，Ubuntu界面不错，Fedora体验很好（支持IP访问的操作）；</li>
+<li>网络+操作系统+存储+虚拟化 -&gt; 云计算；</li>
+<li>RHCA方向：DC（数据中心)，Storage（存储），Cloud（云计算）；</li>
+<li>虚拟化是一个技术，云计算是一个理念（云计算：利用虚拟化的技术，对需要的用户提供弹性的服务，包括计算的资源、网络的资源、存储的资源，如：百度云）；</li>
 </ul>
 <h2 id="学习过程记录">学习过程记录</h2>
 <p><strong>这个用来记录每天学习的进度，每天进步一点点👍👍。</strong></p>
 <ol>
 <li>2020.10.07：视频时间201min，完成第一章的练习题；</li>
+<li>2020.10.08：视频时间min；</li>
 </ol>
 ]]></content>
     </entry>
