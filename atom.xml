@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-08T07:46:12.835Z</updated>
+    <updated>2020-10-08T09:23:24.208Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://shley8.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shley8&apos;s Blogs</rights>
     <entry>
-        <title type="html"><![CDATA[第二章：学习周期一周（2020.10.09~2020.10.16）]]></title>
+        <title type="html"><![CDATA[第二章：学习周期一周（2020.10.09~2020.10.16，待观望👀）]]></title>
         <id>https://shley8.github.io/post/di-er-zhang/</id>
         <link href="https://shley8.github.io/post/di-er-zhang/">
         </link>
@@ -19,10 +19,29 @@
         <content type="html"><![CDATA[<p><strong>主要内容：</strong></p>
 <h2 id="shell介绍">Shell介绍</h2>
 <p>Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GUI（Graphical User Interface，图形用户接口），操作系统的工作原理：用户 -&gt; Shell -&gt; Kernal（包含Drive可驱动硬件） -&gt; Hardware -&gt; 执行结果反馈给用户。</p>
+<h2 id="其他">其他</h2>
+<h3 id="随便玩玩">随便玩玩</h3>
+<blockquote>
+<p>while (true);do echo &quot;Shilei is a handsome boy&quot;;sleep 0.5;done</p>
+</blockquote>
+<h3 id="基础的一些入门指令">基础的一些入门指令</h3>
+<blockquote>
+<p>echo<br>
+date<br>
+hostname<br>
+hostnamectl set-hostname [修改之后的主机名]<br>
+bc （交互界面）<br>
+expr （非交互界面）<br>
+我是谁：whoami<br>
+我在哪：pwd（print work directory）<br>
+我要干嘛：<br>
+Ctrl + Shift +&quot;+&quot;（F12上面的而不是小键盘上面的）<br>
+Ctrl + &quot;-&quot;（F12上面的而不是小键盘上面的）</p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[第一章：学习周期两周（2020.09.24~2020.10.7）]]></title>
+        <title type="html"><![CDATA[第一章：学习周期两周（2020.09.24~2020.10.8，完成进度✔）]]></title>
         <id>https://shley8.github.io/post/moudle1xue-xi-zhou-qi-2-zhou/</id>
         <link href="https://shley8.github.io/post/moudle1xue-xi-zhou-qi-2-zhou/">
         </link>
