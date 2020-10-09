@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-08T09:25:50.523Z</updated>
+    <updated>2020-10-09T13:00:21.234Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -19,10 +19,35 @@
         <content type="html"><![CDATA[<p><strong>主要内容：</strong></p>
 <h2 id="shell介绍">Shell介绍</h2>
 <p>Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GUI（Graphical User Interface，图形用户接口），操作系统的工作原理：用户 -&gt; Shell -&gt; Kernal（包含Drive可驱动硬件） -&gt; Hardware -&gt; 执行结果反馈给用户。</p>
+<h2 id="linux各个目录的作用">Linux各个目录的作用</h2>
+<ul>
+<li>root：root的家目录；</li>
+<li>/home：用户的家目录（useradd user +passwd user，增加user用户并且修改user用户的密码）；</li>
+<li>/boot：存放系统的启动配置文件和内核文件；</li>
+<li>/usr：软件默认安装的地方；</li>
+<li>/lib：存放的是32位的函数文件；</li>
+<li>/lib64：存放的是64位的执行文件；</li>
+<li>/bin：存放的是普通用户能执行的命令；</li>
+<li>/sbin：存放的是超级用户能执行的命令；</li>
+<li>/opt：存放软件的目录；</li>
+<li>/dev：存放设备文件；</li>
+<li>/etc：存放配置文件；</li>
+<li>/media，/mnt，/run：挂载目录；</li>
+<li>/proc：存放进程文件；</li>
+<li>/srv：存放资源文件；</li>
+<li>/sys：存放系统资源文件；</li>
+<li>/tmp：存放临时文件（重要）；</li>
+<li>/var：存放日志的文件（重要）；<br>
+<strong>Linux中的带箭头的图标同Windows一样都是快捷方式（例如：/bin，/sbin，/lib，/lib64，指向/usr中的对应的文件）。</strong></li>
+</ul>
 <h2 id="其他">其他</h2>
 <h3 id="随便玩玩">随便玩玩</h3>
 <blockquote>
 <p>while (true);do echo &quot;Shilei is a handsome boy&quot;;sleep 0.5;done</p>
+</blockquote>
+<h3 id="切换用户带不带-">切换用户带不带&quot;-&quot;</h3>
+<blockquote>
+<p>su全称叫做&quot;Switch user&quot;，切换用户带上&quot;-&quot;，表示连同用户的环境变量一起切换掉，因为，切换用户时记得带&quot;-&quot;。</p>
 </blockquote>
 <h3 id="基础的一些入门指令">基础的一些入门指令</h3>
 <blockquote>
@@ -38,6 +63,7 @@ expr （非交互界面）<br>
 Ctrl + Shift +&quot;+&quot;（F12上面的而不是小键盘上面的）<br>
 Ctrl + &quot;-&quot;（F12上面的而不是小键盘上面的）</p>
 </blockquote>
+<p>2020.10.09：视频时间92min，写博客；</p>
 ]]></content>
     </entry>
     <entry>
