@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1602597755247">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1602672217119">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 
 
@@ -30,7 +30,7 @@ Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GU
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://shley8.github.io">
-        <img src="https://shley8.github.io/images/avatar.png?v=1602597755247" class="site-logo">
+        <img src="https://shley8.github.io/images/avatar.png?v=1602672217119" class="site-logo">
         <h1 class="site-title">Shley8&#39;s Blogs</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -206,6 +206,72 @@ Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GU
 <li>cp如果后面是一个不存在的文件名，那么会执行复制操作并且重命名；</li>
 <li>-a 复制文件的所有属性（时间戳、文件的拥有者和用户组）；</li>
 <li>-i 是否覆盖原文件；</li>
+</ul>
+<h3 id="通配符">通配符</h3>
+<ul>
+<li>？：表示匹配任意一个非空字符；</li>
+<li>[]：括号内存在的字符（一个）；</li>
+<li>[^]：括号内不存在的字符（一个）；</li>
+<li>*：任意数量的任意字符；</li>
+<li>\：转义字符，使得后面的字符是它本身的意思；</li>
+<li>{1..100}：有顺序的排列 -&gt; touch aa{1..100} -&gt; 创建以aa开头，1~100结尾的100个文件；</li>
+</ul>
+<h2 id="vim的操作">Vim的操作</h2>
+<hr>
+<h3 id="命令模式">命令模式</h3>
+<p>默认使用vim打开一个文本文件，进入的就是命令模式：</p>
+<ul>
+<li>hjkl：对应小键盘的左、下、上、右；</li>
+<li>gg：鼠标光标切换到文本开头；</li>
+<li>nG：鼠标光标切换到第n行开头；</li>
+<li>x：删除鼠标光标的右边的文本；</li>
+<li>X：删除鼠标光标左边的文本；</li>
+<li>u：恢复上次操作的内容（理论上可以无限恢复，一直按住u即可）；</li>
+</ul>
+<hr>
+<ul>
+<li>dd：剪切光标当前这行；</li>
+<li>ndd：剪切光标当前这行以及下面n-1行；</li>
+<li>yy：复制光标当前这行；</li>
+<li>nyy：复制光标当前这行以及下面n-1行；</li>
+<li>p：将dd或yy的内容粘贴到当前行的下面；</li>
+<li>P：将dd或yy的内容粘贴到当前行的上面；</li>
+</ul>
+<h3 id="插入模式">插入模式</h3>
+<p>在命令模式下，输入i、I、a、A、o、O均可进入到插入模式：</p>
+<ul>
+<li>i：鼠标光标左侧开始插入文本内容；</li>
+<li>I：鼠标行首开始插入内容；</li>
+<li>a：鼠标光标右侧开始插入内容；</li>
+<li>A：鼠标行尾开始插入内容；</li>
+<li>o：鼠标当前行重启一行开始插入（下方）；</li>
+<li>O：鼠标当前行上方重启一行开始插入；</li>
+</ul>
+<h3 id="末行模式">末行模式</h3>
+<ul>
+<li>在命令模式之下，输入“：”“/”进入末行模式；</li>
+<li>输入“/”，再输入文本内容，即可在当前文本中高亮显示查找到的内容，回车即可高亮显示查找到的内容，n向下查看显示的内容，N向上查看显示的内容；</li>
+<li>：w（write）：保存（写入）文件；</li>
+<li>：q（quit）：退出文件；</li>
+<li>：q！：强制退出，不会保存文件；</li>
+<li>：wq=：x：保存并且退出  -&gt; 推荐使用：w和：q配合使用；</li>
+<li>：set number（set nu）：显示行号；</li>
+<li>：set nonumber（set nonu）：取消显示行号；</li>
+</ul>
+<h3 id="可视化模式">可视化模式</h3>
+<p>输入v或者V进入可视化模式，或者输入Ctrl+v进入”矩形选择版本“的可视化模式，可用于文本的剪切等操作（和命令模式差不多其实）。</p>
+<h3 id="vim文本替换操作">vim文本替换操作</h3>
+<p>语法格式：&quot;:n1,n2s/old content/new content/global&quot;；</p>
+<ul>
+<li>n1：表示开始行；</li>
+<li>n2：表示结束行，</li>
+<li>global：可简写为b，不加此参数，替换操作只会在每行查找到的第一个字符进行替换操作；</li>
+<li>:1,$s/123/456/g：把从全文（第一行开始到最后一行结束的“123”全部替换成“456”）；</li>
+</ul>
+<h3 id="vim的异常处理">vim的异常处理</h3>
+<ul>
+<li>在使用vim文本编辑器操作的时候，会在当前目录下生成一个.swp的文件，我们的操作是对这个swp文件进行操作的，当选择保存的时候，原文件会和swp文件进行比较，然后更新文件内容。</li>
+<li>在当编辑的时候出现意外时，可恢复该文本文件内容，使用vim 编辑器编辑该文件，选择“r”，然后选择回车即可。</li>
 </ul>
 <h2 id="其他">其他</h2>
 <h3 id="随便玩玩">随便玩玩</h3>
