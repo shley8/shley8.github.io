@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1602672217119">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1602756640911">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 
 
@@ -30,7 +30,7 @@ Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GU
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://shley8.github.io">
-        <img src="https://shley8.github.io/images/avatar.png?v=1602672217119" class="site-logo">
+        <img src="https://shley8.github.io/images/avatar.png?v=1602756640911" class="site-logo">
         <h1 class="site-title">Shley8&#39;s Blogs</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -273,6 +273,43 @@ Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GU
 <li>在使用vim文本编辑器操作的时候，会在当前目录下生成一个.swp的文件，我们的操作是对这个swp文件进行操作的，当选择保存的时候，原文件会和swp文件进行比较，然后更新文件内容。</li>
 <li>在当编辑的时候出现意外时，可恢复该文本文件内容，使用vim 编辑器编辑该文件，选择“r”，然后选择回车即可。</li>
 </ul>
+<hr>
+<h2 id="重定向和管道">重定向和管道</h2>
+<hr>
+<h3 id="输出重定向">输出重定向</h3>
+<ul>
+<li>&gt;：正确的内容覆盖（创建）；</li>
+</ul>
+<blockquote>
+<p>ls &gt; test.txt （将ls命令输出在桌面的内容，输出到text.txt里面）；</p>
+</blockquote>
+<ul>
+<li>&gt;&gt;：正确的内容在原文本后面添加上；</li>
+<li>2&gt;：错误的内容覆盖（创建）；</li>
+</ul>
+<blockquote>
+<p>dsakdjsalk 2&gt; test.txt（将dsakdjsalk命令输出的内容，输出到test.txt文件里面，因为dsakdjsalk命令不存在。所以会报错）；</p>
+</blockquote>
+<ul>
+<li>2&gt;&gt;：错误的内容在原文本后面添加上；</li>
+<li>&amp;&gt;：不论是正确的还是错误的内容都覆盖（创建）；</li>
+<li>&amp;&gt;&gt;：不论是正确还是错误的内容都在原文本内容后面加上；</li>
+</ul>
+<h3 id="输入重定向">输入重定向</h3>
+<p>输入重定向的作用是把Linux下的交互式命令变成非交互时命令；<br>
+Shell脚本其实就是Linux下的命令的集合，编写shell脚本的思想就是使用非交互式命令，这样脚本才能自己动起来，输入重定向为此做了很大的贡献；</p>
+<ul>
+<li>&lt;：使用mail命令可进行很好的实例操作，使用输入重定向可使交互式命令变成非交互式命令，从而可以直接发送邮件 ：</li>
+</ul>
+<blockquote>
+<p>mail -s &quot;这是邮件的主题&quot;  shley  &lt; text.txt （shley是要发送的用户，text.txt是本来命令交互时需要用户输入的内容）；</p>
+</blockquote>
+<ul>
+<li>&lt;&lt;：实际举例：</li>
+</ul>
+<blockquote>
+<p>cat  &gt;  test.txt  &lt;&lt;finish（test.txt是需要输入的内容，输入finish结束）；</p>
+</blockquote>
 <h2 id="其他">其他</h2>
 <h3 id="随便玩玩">随便玩玩</h3>
 <blockquote>
@@ -292,7 +329,8 @@ expr （非交互界面）<br>
 </blockquote>
 <p>2020.10.09：视频时间92min，写博客；<br>
 2020.10.10：视频时间73min，写博客；<br>
-2020.10.13：视频时间139min，写博客；</p>
+2020.10.13：视频时间139min，写博客；<br>
+2020.10.14：视频时间140min，写博客；</p>
 
             </div>
             
