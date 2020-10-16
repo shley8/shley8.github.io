@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1602756717553">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1602860922204">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 
 
@@ -30,7 +30,7 @@ Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GU
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://shley8.github.io">
-        <img src="https://shley8.github.io/images/avatar.png?v=1602756717553" class="site-logo">
+        <img src="https://shley8.github.io/images/avatar.png?v=1602860922204" class="site-logo">
         <h1 class="site-title">Shley8&#39;s Blogs</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -310,6 +310,51 @@ Shell脚本其实就是Linux下的命令的集合，编写shell脚本的思想�
 <blockquote>
 <p>cat  &gt;  test.txt  &lt;&lt;finish（test.txt是需要输入的内容，输入finish结束）；</p>
 </blockquote>
+<h3 id="管道介绍">管道介绍</h3>
+<ul>
+<li>管道要有两个命令，一个是非交互式命令，另一个是交互式命令 -&gt; 例如：ls | cat；</li>
+<li>前一个命令的输出作为另一个命令的输入；</li>
+</ul>
+<p>使用方法分析：</p>
+<blockquote>
+<p>编辑已知文件shley.txt，内容为“Hello”；<br>
+echo shley.txt | cat -&gt; 输出shley.txt，首先输出shley.txt，然后进入cat命令，输入shley.txt，最后屏幕显示shley.txt；<br>
+echo shley.txt | xargs cat -&gt;   输出”Hello“，首先输出shlet.txt，然后将输出作为参数输入cat，所以打开shley.txt文件，输出文件内容。、</p>
+</blockquote>
+<h3 id="grep命令">grep命令</h3>
+<p>grep命令用来抓取文本文件中需要的内容；<br>
+grep配合管道可抓取任意内容（文件和文本内容），因此十分强大；</p>
+<ul>
+<li>ls | grep test; -&gt; 抓取文件名包含test的文件（当前目录）；</li>
+<li>ls | xargs grep test; -&gt;抓取文件内容包含test的文件（当前目录）；<br>
+几个常用的命令（假设创建文件shley.txt）：</li>
+<li>grep -i aaa shley.txt：不分大小写抓取shley.txt中aaa文本；</li>
+<li>grep -v aaa shley.txt：抓取shley.txt文本中除了aaa的内容；</li>
+<li>grep -n aaa shley.txt：抓取shley.txt文本中aaa且显示行号；</li>
+<li>grep -A 2 aaa shley.txt：抓取shley.txt文本中aaa以及aaa的后两行（after）；</li>
+<li>grep -B 2 aaa shley.txt：抓取shley.txt文本中aaa以及aaa的前两行（before）；</li>
+</ul>
+<h3 id="简单的正则表达式">简单的正则表达式</h3>
+<p>正则表达式是对文本文件内容的操作，标识符是对文件名的操作；</p>
+<ul>
+<li>^：以什么什么开头；</li>
+<li>$：以什么什么结尾；（空格可用“^$”表示）；</li>
+<li>.：匹配任意一个非空字符；</li>
+<li>.*：匹配所有；</li>
+</ul>
+<blockquote>
+<p>一个简单的使用，要求过滤文本文件内的注释（以#开头）并且过滤空格：grep ^# -v test.txt | grep ^# -v -n ；</p>
+</blockquote>
+<h2 id="常用的快捷键">常用的快捷键</h2>
+<ul>
+<li>ctrl + l ：清屏；</li>
+<li>ctrl + a：光标移到最左侧；</li>
+<li>ctrl + e：光标移到最右侧；</li>
+<li>ctrl + u：光标所在处的左侧内容全部删除；</li>
+<li>ctrl + y：恢复操作；</li>
+<li>ctrl + w：光标左侧删除一个word（单词）；</li>
+<li>!+一个字母（或者开头）：运行history（记录使用过的命令，输入history即可显示）里面的最近的一个以那个字母（开头）的命令； -&gt; 除非你知道自己在做什么，否则 慎重使用。</li>
+</ul>
 <h2 id="其他">其他</h2>
 <h3 id="随便玩玩">随便玩玩</h3>
 <blockquote>
