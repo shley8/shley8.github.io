@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-16T15:08:44.044Z</updated>
+    <updated>2020-10-18T03:01:29.080Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://shley8.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shley8&apos;s Blogs</rights>
     <entry>
-        <title type="html"><![CDATA[第二章：学习周期一周（2020.10.09~2020.10.16，待观望👀）]]></title>
+        <title type="html"><![CDATA[第二章：学习周期一周（2020.10.09~2020.10.16，未完成❌）]]></title>
         <id>https://shley8.github.io/post/di-er-zhang/</id>
         <link href="https://shley8.github.io/post/di-er-zhang/">
         </link>
@@ -255,7 +255,7 @@ grep配合管道可抓取任意内容（文件和文本内容），因此十分�
 <li>grep -B 2 aaa shley.txt：抓取shley.txt文本中aaa以及aaa的前两行（before）；</li>
 </ul>
 <h3 id="简单的正则表达式">简单的正则表达式</h3>
-<p>正则表达式是对文本文件内容的操作，标识符是对文件名的操作；</p>
+<p>正则表达式是对文本文件内容的操作，标识符是对文件名的操作（不绝对）；</p>
 <ul>
 <li>^：以什么什么开头；</li>
 <li>$：以什么什么结尾；（空格可用“^$”表示）；</li>
@@ -292,11 +292,19 @@ expr （非交互界面）<br>
 我在哪：pwd（print work directory）<br>
 我要干嘛：</p>
 </blockquote>
-<p>2020.10.09：视频时间92min，写博客；<br>
+<h2 id="知识点总结">知识点总结</h2>
+<ul>
+<li>文件后缀名只是文件打开的方式，当文件创建的时候文件的类型就决定了（比如.txt文件后缀修改为.pdf是打不开的）；</li>
+</ul>
+<h2 id="20201009视频时间92min写博客20201010视频时间73min写博客20201013视频时间139min写博客20201014视频时间140min写博客20201015视频时间76min写博客20201016视频时间136min写博客20201017视频时间68min20201018视频时间87min写博客">2020.10.09：视频时间92min，写博客；<br>
 2020.10.10：视频时间73min，写博客；<br>
 2020.10.13：视频时间139min，写博客；<br>
 2020.10.14：视频时间140min，写博客；<br>
-2020.10.15：视频时间76min，写博客；</p>
+2020.10.15：视频时间76min，写博客；<br>
+2020.10.16：视频时间136min，写博客；<br>
+2020.10.17：视频时间68min；<br>
+2020.10.18：视频时间87min，写博客；</h2>
+<p>需要加快进度了，懒懒散散不可取，比计划拖后两天完成（2020.10.18完成）。</p>
 ]]></content>
     </entry>
     <entry>
