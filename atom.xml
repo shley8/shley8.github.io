@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-18T07:56:11.709Z</updated>
+    <updated>2020-10-18T10:25:20.354Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -18,6 +18,87 @@
         <updated>2020-10-18T03:01:45.000Z</updated>
         <content type="html"><![CDATA[<h2 id="主要内容">主要内容</h2>
 <hr>
+<h2 id="用户的增删改查">用户的增删改查</h2>
+<h3 id="增">增</h3>
+<p>使用“useradd + 用户名”添加用户；<br>
+useradd shley -u 5000 -d /home/shley -s /bin/bash -&gt; 创建一个shley用户，uid为5000，家目录为/home/shley，使用的shell为/bin/bash 。</p>
+<h3 id="删">删</h3>
+<p>userdel + 用户名 可删除用户，默认不删除用户的家目录和邮箱（菜鸡保护机制，因为用户的家目录和有邮箱一般都是存放重要信息的地方，想都删除可加上-r参数）。</p>
+<h3 id="改">改</h3>
+<p>命令：usermod（user modify）+用户名+参数；<br>
+usermod shley -u 5000 -d / -s /bin/bash -&gt; 将shley用户的uid修改为5000，家目录修改为根目录，默认的shell修改为/bin/bash。<br>
+注意：一般不会修改默认的家目录，否则会出现问题（创建用户的时候会默认参照/etc/login.defs文件创建一些东西，例如用户家目录 -&gt; GREATE_HOME参数决定，邮箱等...）。</p>
+<h3 id="查">查</h3>
+<p>id + 用户名可查看（跟grep一样，通过读取/etc/passwd文件显示用户信息的）；<br>
+grep + 用户名 + /etc/passwd 也可查看；</p>
+<blockquote>
+<p>/etc/passwd下面记录的用户信息的规则</p>
+<blockquote>
+<p>总共记录7个信息用六个”:“隔开；<br>
+第一个：用户名（登录名）；<br>
+第二个：密码，已经删除显示，存放在/etc/shadow文件里（Unix系统以前是存放在这块的）；<br>
+第三个：用户的uid，不可重复；<br>
+第四个：用户所属组的ID（private group，private group、primary group、attached group三个组有何区别暂时没学习到，后面讲）；<br>
+第五个：描述信息；<br>
+第六个：家目录；<br>
+第七个：默认shell的路径；</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>什么文件存放什么信息</p>
+<blockquote>
+<p>/etc/passwd：存放用户信息；<br>
+/etc/shadow：存放用户的密码信息；<br>
+/etc/group：存放用户组的信息；<br>
+/etc/gshadow：存放用户组的密码信息；</p>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="用户组的增删改查">用户组的增删改查</h2>
+<h3 id="增-2">增</h3>
+<p>groupadd +组名；<br>
+groupadd shley -g 5000 -&gt; 添加名为shley的组，gid为5000；</p>
+<h3 id="删-2">删</h3>
+<p>groupdel +组名；</p>
+<h3 id="改-2">改</h3>
+<p>groupmod + 组名+参数（此功能比较鸡肋）；<br>
+groupmod shley -g 50000 -&gt; 修改shley用户组的gid为50000；</p>
+<h3 id="查-2">查</h3>
+<p>grep + 组名 + /etc/group；</p>
+<blockquote>
+<p>/etc/group下面记录的用户信息的规则</p>
+<blockquote>
+<p>每一个冒号表示一块内容；<br>
+第一个：组名；<br>
+第二个：密码，存放在/etc/gshadow里面，用x表示；<br>
+第三个：gid；<br>
+第四个：”组成员“（primary group ，默认不显示跟自己同名的用户）；</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>用户的创建加的参数-u能指定uid，用户组的创建加-g能指定gid，uid -&gt; user ID，gid -&gt; group ID，都是唯一的；<br>
+用户组分为三种，primary group（主要组），private group（私有组），attached group（附加组）；</p>
+</blockquote>
+<h3 id="private-groupprimary-group和attached-group的辨析">private group，primary group和attached group的辨析</h3>
+<ol>
+<li>private group：当创建用户未指定用户组（primarg group）的时候，系统默认会创建一个同名的组，这个组是用户的private group；</li>
+<li>priamry group：
+<ul>
+<li>创建用户，可使用-g 参数来表明该用户的primary group（主要组）-&gt; useradd shley -g shley；</li>
+<li>/etc/passwd 的第四列表示的就是该用户的primary group；</li>
+<li>一个用户的private group 也可以是他的 primary group；</li>
+</ul>
+</li>
+<li>attached group：
+<ul>
+<li>创建用户时，可使用-G参数来指定用户的attached group（附加组，次要组）-&gt; useradd shley -G shley；</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>使用 id + 用户名 的时候，显示出来的gid是他的primary group，其他的全是他的attached group；</p>
+</blockquote>
+<h2 id="用户的">用户的</h2>
 ]]></content>
     </entry>
     <entry>
