@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-18T03:01:29.080Z</updated>
+    <updated>2020-10-18T03:06:13.166Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -11,12 +11,22 @@
     <icon>https://shley8.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shley8&apos;s Blogs</rights>
     <entry>
+        <title type="html"><![CDATA[第三章：学习周期四天（2020.10.18~2020.10.21，待观望...）]]></title>
+        <id>https://shley8.github.io/post/di-san-zhang-20201018~20201021dai-guan-wang/</id>
+        <link href="https://shley8.github.io/post/di-san-zhang-20201018~20201021dai-guan-wang/">
+        </link>
+        <updated>2020-10-18T03:01:45.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="主要内容">主要内容</h2>
+<hr>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[第二章：学习周期一周（2020.10.09~2020.10.16，未完成❌）]]></title>
         <id>https://shley8.github.io/post/di-er-zhang/</id>
         <link href="https://shley8.github.io/post/di-er-zhang/">
         </link>
         <updated>2020-10-08T07:25:09.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>主要内容：</strong></p>
+        <content type="html"><![CDATA[<p><strong>主要内容：文件的增（普通文件、目录文件）、删（普通文件、目录文件）、改（文件的内容、属性）、查（文件的内容、属性）操作，vim编辑器的使用（文件内容修改的内容），重定向和管道，通配符和正则表达式...</strong></p>
 <h2 id="shell介绍">Shell介绍</h2>
 <p>Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GUI（Graphical User Interface，图形用户接口），操作系统的工作原理：用户 -&gt; Shell -&gt; Kernal（包含Drive可驱动硬件） -&gt; Hardware -&gt; 执行结果反馈给用户。</p>
 <h2 id="linux各个目录的作用">Linux各个目录的作用</h2>
@@ -313,7 +323,7 @@ expr （非交互界面）<br>
         <link href="https://shley8.github.io/post/moudle1xue-xi-zhou-qi-2-zhou/">
         </link>
         <updated>2020-10-06T02:55:34.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>主要内容：本章主要介绍计算机的基础知识（计算机发展历史、操作系统的发展历史、服务器的基础知识等），以及Linux（Gun/Linux）操作系统的安装。</strong></p>
+        <content type="html"><![CDATA[<p><strong>主要内容：本章主要介绍计算机的基础知识（计算机发展历史、操作系统的发展历史、服务器的基础知识等），以及Linux（Gun/Linux）操作系统的安装...</strong></p>
 <h2 id="计算机的发展历史">计算机的发展历史</h2>
 <p>计算机的主要功能就是做计算，早期计算机（其实可以称为计算器）是机械计算机，用户输入数据，输入运算符（加减乘除），随后计算机进行计算，输出结果；后来随着电子管的出现，出现了电子计算机（这时候的计算机才是能通电的）；再后来随着晶体管的出现，出现了晶体管计算机，晶体管计算机的出现使得计算机的性能有了飞速的增长（目前的计算机都是集成电路计算机，而集成电路组成的基本单元就是晶体管）。</p>
 <h2 id="操作系统的发展历史">操作系统的发展历史</h2>
