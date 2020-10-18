@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-18T03:09:24.487Z</updated>
+    <updated>2020-10-18T03:10:23.668Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -305,7 +305,7 @@ expr （非交互界面）<br>
 <h2 id="知识点总结">知识点总结</h2>
 <ul>
 <li>文件后缀名只是文件打开的方式，当文件创建的时候文件的类型就决定了（比如.txt文件后缀修改为.pdf是打不开的）；</li>
-<li>echo $PATH：当前用户使用命令的时候系统查找命令的路径，root依次为：/usr/local/sbin；/usr/local/bin；/usr/sbin；/usr/bin；/root/bin；alias；普通用户的话涉及到的sbin和bin目录会反过来；</li>
+<li>echo $PATH：当前用户使用命令的时候系统查找命令的路径，root依次为：/usr/local/sbin；/usr/local/bin；/usr/sbin；/usr/bin；/root/bin；alias；普通用户的话涉及到的sbin和bin目录会反过来（大致如此，此项总结不严谨）；</li>
 </ul>
 <h2 id="20201009视频时间92min写博客20201010视频时间73min写博客20201013视频时间139min写博客20201014视频时间140min写博客20201015视频时间76min写博客20201016视频时间136min写博客20201017视频时间68min20201018视频时间87min写博客">2020.10.09：视频时间92min，写博客；<br>
 2020.10.10：视频时间73min，写博客；<br>
