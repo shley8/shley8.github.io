@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-18T10:25:20.354Z</updated>
+    <updated>2020-10-19T01:24:14.600Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -98,6 +98,25 @@ groupmod shley -g 50000 -&gt; 修改shley用户组的gid为50000；</p>
 <blockquote>
 <p>使用 id + 用户名 的时候，显示出来的gid是他的primary group，其他的全是他的attached group；</p>
 </blockquote>
+<h3 id="已存在的用户添加attached-group附加组的操作">已存在的用户添加attached group（附加组）的操作</h3>
+<ul>
+<li>
+<p>usermod -G  attahced group 用户名；-&gt; 只能添加用户进一个attached group；</p>
+</li>
+<li>
+<p>usermod -aG  attached group 用户名； -&gt; 能添加用户进入多个attached group，-a<br>
+参数位置要放对，不然会报错；</p>
+</li>
+<li>
+<p>gpasswd -a 用户名 attached group；-&gt; 添加用户进用户组（attached group）；</p>
+</li>
+<li>
+<p>gpasswd -d 用户名 attached group； -&gt; 将用户从用户组中删除（attached group）；</p>
+</li>
+<li>
+<p>操作完成后可使用id + 用户名查看该用户的组信息；</p>
+</li>
+</ul>
 <h2 id="用户的">用户的</h2>
 ]]></content>
     </entry>

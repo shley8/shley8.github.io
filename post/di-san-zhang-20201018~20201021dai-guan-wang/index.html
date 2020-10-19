@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第三章：学习周期四天（2020.10.18~2020.10.21，待观望...） | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603016715506">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603070631459">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第三章：学习周期四天（2020.10.18~2020.10.21，待观望...） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -26,7 +26,7 @@ useradd shley -u 5000 -d /home/shley -s /bin/bash -&gt; 创建一个shley用户�
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603016715506" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603070631459" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -175,6 +175,25 @@ groupmod shley -g 50000 -&gt; 修改shley用户组的gid为50000；</p>
 <blockquote>
 <p>使用 id + 用户名 的时候，显示出来的gid是他的primary group，其他的全是他的attached group；</p>
 </blockquote>
+<h3 id="已存在的用户添加attached-group附加组的操作">已存在的用户添加attached group（附加组）的操作</h3>
+<ul>
+<li>
+<p>usermod -G  attahced group 用户名；-&gt; 只能添加用户进一个attached group；</p>
+</li>
+<li>
+<p>usermod -aG  attached group 用户名； -&gt; 能添加用户进入多个attached group，-a<br>
+参数位置要放对，不然会报错；</p>
+</li>
+<li>
+<p>gpasswd -a 用户名 attached group；-&gt; 添加用户进用户组（attached group）；</p>
+</li>
+<li>
+<p>gpasswd -d 用户名 attached group； -&gt; 将用户从用户组中删除（attached group）；</p>
+</li>
+<li>
+<p>操作完成后可使用id + 用户名查看该用户的组信息；</p>
+</li>
+</ul>
 <h2 id="用户的">用户的</h2>
 
               </div>
@@ -198,6 +217,7 @@ groupmod shley -g 50000 -&gt; 修改shley用户组的gid为50000；</p>
 <li><a href="#%E6%94%B9-2">改</a></li>
 <li><a href="#%E6%9F%A5-2">查</a></li>
 <li><a href="#private-groupprimary-group%E5%92%8Cattached-group%E7%9A%84%E8%BE%A8%E6%9E%90">private group，primary group和attached group的辨析</a></li>
+<li><a href="#%E5%B7%B2%E5%AD%98%E5%9C%A8%E7%9A%84%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0attached-group%E9%99%84%E5%8A%A0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C">已存在的用户添加attached group（附加组）的操作</a></li>
 </ul>
 </li>
 <li><a href="#%E7%94%A8%E6%88%B7%E7%9A%84">用户的</a></li>
