@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-19T01:24:14.600Z</updated>
+    <updated>2020-10-19T09:28:02.001Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -117,7 +117,20 @@ groupmod shley -g 50000 -&gt; 修改shley用户组的gid为50000；</p>
 <p>操作完成后可使用id + 用户名查看该用户的组信息；</p>
 </li>
 </ul>
-<h2 id="用户的">用户的</h2>
+<h2 id="存放密码的文件-etcshadow各个字段的介绍">存放密码的文件-&gt; /etc/shadow各个字段的介绍</h2>
+<p>密码的各个字段的信息以：隔开，共八个：九个字段；</p>
+<ul>
+<li>passwd + 用户名可添加用户密码；</li>
+<li>第一个：该密码的用户的名字；</li>
+<li>第二个：经过加密后的密码（加密方式在/etc/login.defs里面的“Use SHA512 to encrypt password”下，加密时第一二个$之间表示加密的方式，第二三个之间表示时间信息，因为在设置加密的时候考虑了时间的因素，因此即使是相同的密码，不同时间创建密码的密文也不一样）；</li>
+<li>第三个：上次密码修改的时间，没修改过默认没信息（空），修改过的话以“自1970.1.1到修改密码的那天之间的差值”表示；</li>
+<li>第四个：密码最短使用期（修改密码之后不能再次修改）；</li>
+<li>第五个：密码最长使用期；</li>
+<li>第六个：密码到期前的警告日期（提前告知）；</li>
+<li>第七个：密码到期后的宽限日期（到期后还能使用）；</li>
+<li>第八个：密码到期的日期；</li>
+<li>第九个：保留字段；</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
