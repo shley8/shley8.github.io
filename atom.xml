@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-22T14:13:39.473Z</updated>
+    <updated>2020-10-22T14:14:43.295Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -59,38 +59,38 @@ rwx：表示该目录有读、写的权限；<br>
 <table>
 <thead>
 <tr>
-<th>权限</th>
-<th>对应数字</th>
+<th style="text-align:center">权限</th>
+<th style="text-align:center">对应数字</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>--x</td>
-<td>1</td>
+<td style="text-align:center">--x</td>
+<td style="text-align:center">1</td>
 </tr>
 <tr>
-<td>-w-</td>
-<td>2</td>
+<td style="text-align:center">-w-</td>
+<td style="text-align:center">2</td>
 </tr>
 <tr>
-<td>-wx</td>
-<td>3</td>
+<td style="text-align:center">-wx</td>
+<td style="text-align:center">3</td>
 </tr>
 <tr>
-<td>r--</td>
-<td>4</td>
+<td style="text-align:center">r--</td>
+<td style="text-align:center">4</td>
 </tr>
 <tr>
-<td>r-x</td>
-<td>5</td>
+<td style="text-align:center">r-x</td>
+<td style="text-align:center">5</td>
 </tr>
 <tr>
-<td>rw-</td>
-<td>6</td>
+<td style="text-align:center">rw-</td>
+<td style="text-align:center">6</td>
 </tr>
 <tr>
-<td>rwx</td>
-<td>7</td>
+<td style="text-align:center">rwx</td>
+<td style="text-align:center">7</td>
 </tr>
 </tbody>
 </table>
