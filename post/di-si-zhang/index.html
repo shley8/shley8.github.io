@@ -1,0 +1,270 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>第四章：学习周期六天（2020.10.22~2020.10.28，） | Shley8&#39;s Blogs</title>
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603375888358">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="第四章：学习周期六天（2020.10.22~2020.10.28，） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="主要内容：权限和ACL
+权限
+目录权限
+
+r权限表示可以查看目录内文件的属性（ls命令）；
+w权限表示可以在目录内创建或者删除文件；
+x权限表示可以进入该目录
+
+
+对文件来说，只有三类权限有意义：
+
+---：表示目录不能访问；
+r-x：表示..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://shley8.github.io">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603375888358" alt="">
+  </a>
+  <h1 class="site-title">
+    Shley8&#39;s Blogs
+  </h1>
+  <p class="site-description">
+    宛若新生
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              第四章：学习周期六天（2020.10.22~2020.10.28，）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-10-22
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><strong>主要内容：权限和ACL</strong></p>
+<h2 id="权限">权限</h2>
+<h3 id="目录权限">目录权限</h3>
+<ul>
+<li>r权限表示可以查看目录内文件的属性（ls命令）；</li>
+<li>w权限表示可以在目录内创建或者删除文件；</li>
+<li>x权限表示可以进入该目录</li>
+</ul>
+<blockquote>
+<p>对文件来说，只有三类权限有意义：</p>
+<blockquote>
+<p>---：表示目录不能访问；<br>
+r-x：表示该目录有读权限；<br>
+rwx：表示该目录有读、写的权限；<br>
+其他权限都是畸形权限（以进入网吧为例：r为看，w为玩，x为进入）；</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>父目录的权限会影响子目录的权限，例如：父目录无权限，那么子目录即使有权限也无法执行对应的操作。</li>
+</ul>
+<h3 id="普通文本权限包括二进制文件">普通文本权限（包括二进制文件）</h3>
+<ul>
+<li>r权限表示文本内容可被查看；</li>
+<li>w权限表示文本内容可以增加、减少、修改；</li>
+<li>x权限表示文本可以当作脚本一样执行；</li>
+</ul>
+<h2 id="修改权限">修改权限</h2>
+<ul>
+<li>chown + 用户名 +文件名 -&gt; 修改文件所有者；</li>
+<li>chown  用户名: 组名 + 文件名 -&gt; 修改文件所有者+所在组；</li>
+<li>chgrp + 组名 +文件名 -&gt; 修改文件所有组；</li>
+<li>chmod + u/g/o + +/-/= +r/w/x/ + 文件名 -&gt; 给u（user，所有者）、g（group，所在组）、o（other，其他用户）增加、减少或者等于r/w/x权限；</li>
+</ul>
+<hr>
+<ul>
+<li>对于目录文件的解释：所有者对目录有写权限（w），可以删除目录里的文件，不论这个文件的所有者是谁（目录的权限和目录里文件的权限是两码事）；</li>
+<li>对于文普通文件w权限的解释：一个文件，所有者和root可以用强（比如无写权限可以使用:wq!强制保存），其他的用户都得按照规则来；</li>
+<li>对于普通文件x权限的解释：当一个普通文件有x权限时，系统默认为此文件为脚本文件，文件里的内容全部按照命令来执行（运行方法：绝对路径/相对路径 -&gt; ./文件名 -&gt; 推荐使用绝对路径来执行）；</li>
+</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对应数字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--x</td>
+<td>1</td>
+</tr>
+<tr>
+<td>-w-</td>
+<td>2</td>
+</tr>
+<tr>
+<td>-wx</td>
+<td>3</td>
+</tr>
+<tr>
+<td>r--</td>
+<td>4</td>
+</tr>
+<tr>
+<td>r-x</td>
+<td>5</td>
+</tr>
+<tr>
+<td>rw-</td>
+<td>6</td>
+</tr>
+<tr>
+<td>rwx</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>chmod + 数字*3+ 文件名 -&gt; 设置权限；</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%9D%83%E9%99%90">权限</a>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90">目录权限</a></li>
+<li><a href="#%E6%99%AE%E9%80%9A%E6%96%87%E6%9C%AC%E6%9D%83%E9%99%90%E5%8C%85%E6%8B%AC%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6">普通文本权限（包括二进制文件）</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90">修改权限</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://shley8.github.io/post/di-san-zhang-20201018~20201021dai-guan-wang/">
+              <h3 class="post-title">
+                第三章：学习周期四天（2020.10.18~2020.10.21，已完成✅）
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/Shley8" target="_blank">Shley8</a>
+  <a class="rss" href="https://shley8.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

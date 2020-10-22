@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-19T09:28:02.001Z</updated>
+    <updated>2020-10-22T14:11:32.297Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -11,7 +11,96 @@
     <icon>https://shley8.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shley8&apos;s Blogs</rights>
     <entry>
-        <title type="html"><![CDATA[第三章：学习周期四天（2020.10.18~2020.10.21，待观望...）]]></title>
+        <title type="html"><![CDATA[第四章：学习周期六天（2020.10.22~2020.10.28，）]]></title>
+        <id>https://shley8.github.io/post/di-si-zhang/</id>
+        <link href="https://shley8.github.io/post/di-si-zhang/">
+        </link>
+        <updated>2020-10-22T12:02:16.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>主要内容：权限和ACL</strong></p>
+<h2 id="权限">权限</h2>
+<h3 id="目录权限">目录权限</h3>
+<ul>
+<li>r权限表示可以查看目录内文件的属性（ls命令）；</li>
+<li>w权限表示可以在目录内创建或者删除文件；</li>
+<li>x权限表示可以进入该目录</li>
+</ul>
+<blockquote>
+<p>对文件来说，只有三类权限有意义：</p>
+<blockquote>
+<p>---：表示目录不能访问；<br>
+r-x：表示该目录有读权限；<br>
+rwx：表示该目录有读、写的权限；<br>
+其他权限都是畸形权限（以进入网吧为例：r为看，w为玩，x为进入）；</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>父目录的权限会影响子目录的权限，例如：父目录无权限，那么子目录即使有权限也无法执行对应的操作。</li>
+</ul>
+<h3 id="普通文本权限包括二进制文件">普通文本权限（包括二进制文件）</h3>
+<ul>
+<li>r权限表示文本内容可被查看；</li>
+<li>w权限表示文本内容可以增加、减少、修改；</li>
+<li>x权限表示文本可以当作脚本一样执行；</li>
+</ul>
+<h2 id="修改权限">修改权限</h2>
+<ul>
+<li>chown + 用户名 +文件名 -&gt; 修改文件所有者；</li>
+<li>chown  用户名: 组名 + 文件名 -&gt; 修改文件所有者+所在组；</li>
+<li>chgrp + 组名 +文件名 -&gt; 修改文件所有组；</li>
+<li>chmod + u/g/o + +/-/= +r/w/x/ + 文件名 -&gt; 给u（user，所有者）、g（group，所在组）、o（other，其他用户）增加、减少或者等于r/w/x权限；</li>
+</ul>
+<hr>
+<ul>
+<li>对于目录文件的解释：所有者对目录有写权限（w），可以删除目录里的文件，不论这个文件的所有者是谁（目录的权限和目录里文件的权限是两码事）；</li>
+<li>对于文普通文件w权限的解释：一个文件，所有者和root可以用强（比如无写权限可以使用:wq!强制保存），其他的用户都得按照规则来；</li>
+<li>对于普通文件x权限的解释：当一个普通文件有x权限时，系统默认为此文件为脚本文件，文件里的内容全部按照命令来执行（运行方法：绝对路径/相对路径 -&gt; ./文件名 -&gt; 推荐使用绝对路径来执行）；</li>
+</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>对应数字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--x</td>
+<td>1</td>
+</tr>
+<tr>
+<td>-w-</td>
+<td>2</td>
+</tr>
+<tr>
+<td>-wx</td>
+<td>3</td>
+</tr>
+<tr>
+<td>r--</td>
+<td>4</td>
+</tr>
+<tr>
+<td>r-x</td>
+<td>5</td>
+</tr>
+<tr>
+<td>rw-</td>
+<td>6</td>
+</tr>
+<tr>
+<td>rwx</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>chmod + 数字*3+ 文件名 -&gt; 设置权限；</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[第三章：学习周期四天（2020.10.18~2020.10.21，已完成✅）]]></title>
         <id>https://shley8.github.io/post/di-san-zhang-20201018~20201021dai-guan-wang/</id>
         <link href="https://shley8.github.io/post/di-san-zhang-20201018~20201021dai-guan-wang/">
         </link>
@@ -117,7 +206,8 @@ groupmod shley -g 50000 -&gt; 修改shley用户组的gid为50000；</p>
 <p>操作完成后可使用id + 用户名查看该用户的组信息；</p>
 </li>
 </ul>
-<h2 id="存放密码的文件-etcshadow各个字段的介绍">存放密码的文件-&gt; /etc/shadow各个字段的介绍</h2>
+<h2 id="用户密码的一些知识">用户密码的一些知识</h2>
+<h3 id="存放密码的文件-etcshadow各个字段的介绍">存放密码的文件-&gt; /etc/shadow各个字段的介绍</h3>
 <p>密码的各个字段的信息以：隔开，共八个：九个字段；</p>
 <ul>
 <li>passwd + 用户名可添加用户密码；</li>
@@ -131,6 +221,27 @@ groupmod shley -g 50000 -&gt; 修改shley用户组的gid为50000；</p>
 <li>第八个：密码到期的日期；</li>
 <li>第九个：保留字段；</li>
 </ul>
+<h3 id="passwd操作用户密码信息">passwd操作用户密码信息</h3>
+<p>使用passwd --help查看帮助；<br>
+passwd不能修改密码的“上次修改密码的时间”这个参数；<br>
+-e参数（passwd -e shley）：立刻使该用户密码失效，即该用户一上线需要立刻更改密码（Windwos Server/域环境每当新建用户时，该值默认为0 -&gt; 即登录就需要更改密码；不能设置密码失效日期，只能让用户密码立刻失效）；</p>
+<h3 id="passwd的特殊用法">passwd的特殊用法</h3>
+<p>passwd还能使用-l和-u参数来锁定和解锁一个用户（锁定之后该用户的密码前面会有!!），锁定用户之后除了root其他用户不能登录这个用户的账号；<br>
+使用管道符可以实现直接给用户密码赋值的操作：echo 123 | passwd --stdin（standin，标准输入）shley；</p>
+<h3 id="chagechange-age操作用户密码">chage（change age）操作用户密码</h3>
+<p>change相对于passwd命令对用户密码的操作更全面（时间方面），既可以设置密码中“上次修改密码时间”这个参数，也能指定用户密码失效时间（-E参数）；<br>
+“上次修改密码时间”一般为默认的（真实的上次密码修改的日期）或者为0（用户登陆时必须修改密码且对密码强度有要求）；</p>
+<h2 id="用户组密码的知识">用户组密码的知识</h2>
+<p>gpasswd + 用户组名 ：设置用户组的密码；<br>
+当使用一个用户创建文件时，这个文件的所有者默认为该用户，所属组默认为该用户的primary group；<br>
+输入newgrp + 用户组名，可暂时使用该用户组的shell，创建文件的所属组可暂时更改（attached group），如果该用户不属于该附加组，需输入组密码；</p>
+<h2 id="其他">其他</h2>
+<ul>
+<li>用户管理的最终目标：Authentication（认证），Anything's first step-&gt; Authorization（授权）；</li>
+<li>Rhce7偏向网络管理，Rhce8偏向自动化运维；</li>
+</ul>
+<p>2020.10.19：视频38min，博客书写；<br>
+2020.10.20：视频169min，博客书写，完成单元测试；</p>
 ]]></content>
     </entry>
     <entry>
@@ -420,14 +531,14 @@ expr （非交互界面）<br>
 <li>文件后缀名只是文件打开的方式，当文件创建的时候文件的类型就决定了（比如.txt文件后缀修改为.pdf是打不开的）；</li>
 <li>echo $PATH：当前用户使用命令的时候系统查找命令的路径，root依次为：/usr/local/sbin；/usr/local/bin；/usr/sbin；/usr/bin；/root/bin；alias；普通用户的话涉及到的sbin和bin目录会反过来（大致如此，此项总结不严谨）；</li>
 </ul>
-<h2 id="20201009视频时间92min写博客20201010视频时间73min写博客20201013视频时间139min写博客20201014视频时间140min写博客20201015视频时间76min写博客20201016视频时间136min写博客20201017视频时间68min20201018视频时间87min写博客">2020.10.09：视频时间92min，写博客；<br>
+<h2 id="20201009视频时间92min写博客20201010视频时间73min写博客20201013视频时间139min写博客20201014视频时间140min写博客20201015视频时间76min写博客20201016视频时间136min写博客20201017视频时间68min20201018视频时间87min写博客完成单元测试">2020.10.09：视频时间92min，写博客；<br>
 2020.10.10：视频时间73min，写博客；<br>
 2020.10.13：视频时间139min，写博客；<br>
 2020.10.14：视频时间140min，写博客；<br>
 2020.10.15：视频时间76min，写博客；<br>
 2020.10.16：视频时间136min，写博客；<br>
 2020.10.17：视频时间68min；<br>
-2020.10.18：视频时间87min，写博客；</h2>
+2020.10.18：视频时间87min，写博客，完成单元测试；</h2>
 <p>需要加快进度了，懒懒散散不可取，比计划拖后两天完成（2020.10.18完成）。</p>
 ]]></content>
     </entry>
