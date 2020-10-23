@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第四章：学习周期六天（2020.10.22~2020.10.28，） | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603376081719">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603460594317">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第四章：学习周期六天（2020.10.22~2020.10.28，） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -33,7 +33,7 @@ r-x：表示..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603376081719" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603460594317" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -93,7 +93,7 @@ r-x：表示..." />
                 2020-10-22
               </span>
               <span>
-                3 min read
+                5 min read
               </span>
               
             </div>
@@ -181,6 +181,56 @@ rwx：表示该目录有读、写的权限；<br>
 <ul>
 <li>chmod + 数字*3+ 文件名 -&gt; 设置权限；</li>
 </ul>
+<h2 id="三类特殊权限">三类特殊权限</h2>
+<h3 id="set-uid">Set UID</h3>
+<ul>
+<li>当一个可执行文件的所有者权限的执行权限被加上s时，任何用户只要执行这个文件，就会获得文件的所有者权限；</li>
+<li>/etc/shadow -&gt; 用户可以使用passwd自己修改密码，随后获得root权限，修改/etc/shadow下的存放自己密码的那列，当s权限被撤销时，任何用户不得修改自己的密码；</li>
+<li>使用方法：chmod u+/-s 文件名；</li>
+</ul>
+<h3 id="set-gid">Set GID</h3>
+<ul>
+<li>当一个目录的所属组权限被加上s权限时，任何用户在此目录创建的文件，所属组都是这个目录文件的所属组；</li>
+<li>使用方法：chmod g+/-s 目录名；</li>
+</ul>
+<h3 id="sticky粘置位">Sticky（粘置位）</h3>
+<ul>
+<li>当一个目录文件的其他人权限被加上t时，表明限制了其他用户在此目录的写权限 -&gt; 任何用户都可在此目录创建文件，但是删除文件只能自己删除自己的，不能删除他人创建的文件；</li>
+<li>任何用户只能在/tmp目录下创建文件，而不能删除其他用户创建的文件；</li>
+<li>chmod o+/-t 目录名；</li>
+</ul>
+<blockquote>
+<p>当三类特殊的权限是小写时，表明该文件/目录的x权限还在，当是大写时，表明该文件/目录的x权限被取消了；</p>
+</blockquote>
+<h2 id="umask">umask</h2>
+<ul>
+<li>umask设置root/普通用户创建文件的默认减去权限（root为0022，普通用户为0002）；</li>
+<li>目录权限默认为777，普通文件默认为666（减去x权限，因为普通文件可执行的话会有危险 -&gt; rm /rf）；</li>
+<li>创建一个目录的权限：777（rwxrwxrwx）-022（----w--w-）=755（rwxr-xr-x），注意：是按照权限计算而不是按照数字计算；</li>
+</ul>
+<blockquote>
+<p>如何使用两个命令让三个不同用户（user1、user2和user3）满足不同的权限（rwxrw-r--）？</p>
+<blockquote>
+<p>chmod user1:user2 file；-&gt; 修改文件的所有者和所属组<br>
+chmod u=rwx,g=rw,o=r file；-&gt; 修改文件的权限；</p>
+</blockquote>
+</blockquote>
+<h2 id="文件目录的acl权限">文件/目录的ACL权限</h2>
+<h3 id="文件的acl权限">文件的ACL权限</h3>
+<ul>
+<li>如果普通文件的权限九列后面有加号（“+”），代表此文件的权限（靠ls命令显示出来的）不可靠，需要查看该文件的acl列表来进一步判断该文件的权限；</li>
+<li>查看文件（文件名为file）的acl权限：getfacl（get file acl） file；</li>
+<li>文件的acl设置：
+<ul>
+<li>setfacl（set file acl） -m u:shley:--- file；-&gt; 用户shley对file文件无权限；</li>
+<li>setfacl -m g:shley:rw- file；-&gt; 用户组shley对file文件权限为rw-；</li>
+<li>setfacl -x u:shley file； -&gt; 删除对用户shley的acl限制；</li>
+<li>setfacl -x g:shley file；-&gt; 删除对用户组shley的acl限制</li>
+<li>setfacl -b file； -&gt; 使得该文件的权限九列后面的“+”消失，清除文件的acl设置记录；</li>
+</ul>
+</li>
+</ul>
+<h3 id="目录的acl权限">目录的ACL权限</h3>
 <h2 id="time">Time</h2>
 <ul>
 <li>2020.10.22：视频时间130min，博客写笔记；</li>
@@ -198,6 +248,20 @@ rwx：表示该目录有读、写的权限；<br>
 </ul>
 </li>
 <li><a href="#%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90">修改权限</a></li>
+<li><a href="#%E4%B8%89%E7%B1%BB%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90">三类特殊权限</a>
+<ul>
+<li><a href="#set-uid">Set UID</a></li>
+<li><a href="#set-gid">Set GID</a></li>
+<li><a href="#sticky%E7%B2%98%E7%BD%AE%E4%BD%8D">Sticky（粘置位）</a></li>
+</ul>
+</li>
+<li><a href="#umask">umask</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%9A%84acl%E6%9D%83%E9%99%90">文件/目录的ACL权限</a>
+<ul>
+<li><a href="#%E6%96%87%E4%BB%B6%E7%9A%84acl%E6%9D%83%E9%99%90">文件的ACL权限</a></li>
+<li><a href="#%E7%9B%AE%E5%BD%95%E7%9A%84acl%E6%9D%83%E9%99%90">目录的ACL权限</a></li>
+</ul>
+</li>
 <li><a href="#time">Time</a></li>
 </ul>
 </li>
