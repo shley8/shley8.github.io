@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅） | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603510252756">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603510565047">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -11,19 +11,9 @@
 
 
 
-    <meta name="description" content="主要内容：权限和ACL
+    <meta name="description" content="主要内容：文件/目录的权限九列，修改文件/目录的权限，三类特殊权限（set uid、gid、sticky），文件的ACL设置（setfacl、getfacl），权限委派（/etc/sudoers，/etc/sudoers.d）。
 权限
-目录权限
-
-r权限表示可以查看目录内文件的属性（ls命令）；
-w权限表示可以在目录内创建或者删除文件；
-x权限表示可以进入该目录
-
-
-对文件来说，只有三类权限有意义：
-
----：表示目录不能访问；
-r-x：表示..." />
+目录..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -33,7 +23,7 @@ r-x：表示..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603510252756" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603510565047" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -100,7 +90,7 @@ r-x：表示..." />
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p><strong>主要内容：权限和ACL</strong></p>
+                <p><strong>主要内容：文件/目录的权限九列，修改文件/目录的权限，三类特殊权限（set uid、gid、sticky），文件的ACL设置（setfacl、getfacl），权限委派（/etc/sudoers，/etc/sudoers.d）。</strong></p>
 <h2 id="权限">权限</h2>
 <h3 id="目录权限">目录权限</h3>
 <ul>
@@ -253,8 +243,9 @@ setfacl -m d:user:shley:--- test</p>
 <li>/etc/sudoers文件；</li>
 <li>在里面添加相应的规则，使得特定用户在执行特定命令的时候可以提升到root权限（用户本身并不是root，只是可以让root帮他办事）；</li>
 <li>使用方法：sudo+命令；</li>
+<li>当特权用户比较多时，一般在/etc/sudoers.d的文件内新文件名为特权用户的文件，编辑该文件以添加特权；</li>
 </ul>
-<h2 id="添加内容">添加内容</h2>
+<h2 id="扩展">扩展</h2>
 <h3 id="手动修改密码">手动修改密码</h3>
 <ol>
 <li>openssl passwd 命令：输入要设置的密码明文，随后将生成的明文编辑到对应的用户的/etc/shadow文件即可；</li>
@@ -308,7 +299,7 @@ Link：<a href="https://en.wikipedia.org/wiki/Chattr">https://en.wikipedia.org/w
 </ul>
 </li>
 <li><a href="#%E6%9D%83%E9%99%90%E5%A7%94%E6%B4%BE">权限委派</a></li>
-<li><a href="#%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9">添加内容</a>
+<li><a href="#%E6%89%A9%E5%B1%95">扩展</a>
 <ul>
 <li><a href="#%E6%89%8B%E5%8A%A8%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81">手动修改密码</a></li>
 <li><a href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90">修改文件权限</a></li>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-24T03:30:54.381Z</updated>
+    <updated>2020-10-24T03:36:06.710Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -16,7 +16,7 @@
         <link href="https://shley8.github.io/post/di-si-zhang/">
         </link>
         <updated>2020-10-22T12:02:16.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>主要内容：权限和ACL</strong></p>
+        <content type="html"><![CDATA[<p><strong>主要内容：文件/目录的权限九列，修改文件/目录的权限，三类特殊权限（set uid、gid、sticky），文件的ACL设置（setfacl、getfacl），权限委派（/etc/sudoers，/etc/sudoers.d）。</strong></p>
 <h2 id="权限">权限</h2>
 <h3 id="目录权限">目录权限</h3>
 <ul>
@@ -169,8 +169,9 @@ setfacl -m d:user:shley:--- test</p>
 <li>/etc/sudoers文件；</li>
 <li>在里面添加相应的规则，使得特定用户在执行特定命令的时候可以提升到root权限（用户本身并不是root，只是可以让root帮他办事）；</li>
 <li>使用方法：sudo+命令；</li>
+<li>当特权用户比较多时，一般在/etc/sudoers.d的文件内新文件名为特权用户的文件，编辑该文件以添加特权；</li>
 </ul>
-<h2 id="添加内容">添加内容</h2>
+<h2 id="扩展">扩展</h2>
 <h3 id="手动修改密码">手动修改密码</h3>
 <ol>
 <li>openssl passwd 命令：输入要设置的密码明文，随后将生成的明文编辑到对应的用户的/etc/shadow文件即可；</li>
