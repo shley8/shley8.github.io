@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-24T03:30:12.195Z</updated>
+    <updated>2020-10-24T03:30:54.381Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -187,7 +187,7 @@ setfacl -m d:user:shley:--- test</p>
 i：不允许对这个文件进行任何修改（普通文件）；只能修改目录下的文件，不能建立或删除文件（目录）；<br>
 u：删除后，会保留数据块，以供恢复数据（防止意外删除）；<br>
 s：彻底删除，无法恢复文件；<br>
-[Link]：https://en.wikipedia.org/wiki/Chattr</p>
+Link：<a href="https://en.wikipedia.org/wiki/Chattr">https://en.wikipedia.org/wiki/Chattr</a></p>
 </blockquote>
 </blockquote>
 <h2 id="time">Time</h2>
