@@ -2,11 +2,11 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>第四章：学习周期六天（2020.10.22~2020.10.28，） | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603460594317">
+<title>第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅） | Shley8&#39;s Blogs</title>
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603510210594">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="第四章：学习周期六天（2020.10.22~2020.10.28，） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
@@ -33,7 +33,7 @@ r-x：表示..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603460594317" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603510210594" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -86,14 +86,14 @@ r-x：表示..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              第四章：学习周期六天（2020.10.22~2020.10.28，）
+              第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅）
             </h2>
             <div class="post-info">
               <span>
                 2020-10-22
               </span>
               <span>
-                5 min read
+                7 min read
               </span>
               
             </div>
@@ -218,6 +218,7 @@ chmod u=rwx,g=rw,o=r file；-&gt; 修改文件的权限；</p>
 <h2 id="文件目录的acl权限">文件/目录的ACL权限</h2>
 <h3 id="文件的acl权限">文件的ACL权限</h3>
 <ul>
+<li>acl表由上到下匹配的，匹配到规则之后就停止；</li>
 <li>如果普通文件的权限九列后面有加号（“+”），代表此文件的权限（靠ls命令显示出来的）不可靠，需要查看该文件的acl列表来进一步判断该文件的权限；</li>
 <li>查看文件（文件名为file）的acl权限：getfacl（get file acl） file；</li>
 <li>文件的acl设置：
@@ -230,10 +231,54 @@ chmod u=rwx,g=rw,o=r file；-&gt; 修改文件的权限；</p>
 </ul>
 </li>
 </ul>
-<h3 id="目录的acl权限">目录的ACL权限</h3>
+<h3 id="目录的acl权限目录下创建文件">目录的ACL权限（目录下创建文件）</h3>
+<ul>
+<li>目录ACL权限的意义在于：限制在该目录下所创建文件的文件权限；</li>
+</ul>
+<blockquote>
+<p>需求：在test目录下创建文件，要求user有rwx，group有rw，other有r，shley无任何权限</p>
+<blockquote>
+<p>setfacl -m d:user::rwx test<br>
+setfacl -m d:group::rw test<br>
+setfacl -m d:other::r test<br>
+setfacl -m d:user:shley:--- test</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>设置目录的acl之后，使用getfacl可看到default的值，在该目录下创建的文件默认都会继承该权限限制；</li>
+<li>赋予的权限需要看mask的值，文件的最高权限不得超过mask的限定；</li>
+</ul>
+<h2 id="权限委派">权限委派</h2>
+<ul>
+<li>/etc/sudoers文件；</li>
+<li>在里面添加相应的规则，使得特定用户在执行特定命令的时候可以提升到root权限（用户本身并不是root，只是可以让root帮他办事）；</li>
+<li>使用方法：sudo+命令；</li>
+</ul>
+<h2 id="添加内容">添加内容</h2>
+<h3 id="手动修改密码">手动修改密码</h3>
+<ol>
+<li>openssl passwd 命令：输入要设置的密码明文，随后将生成的明文编辑到对应的用户的/etc/shadow文件即可；</li>
+</ol>
+<h3 id="修改文件权限">修改文件权限</h3>
+<ul>
+<li>lsattr + 文件名查看文件属性；</li>
+<li>chattr + 文件名修改文件属性；</li>
+</ul>
+<blockquote>
+<p>常用的参数（chattr +i（参数） 文件名）：</p>
+<blockquote>
+<p>a：只允许在文件内追加内容，不允许修改或者删除内容（普通文件）；只能在该目录下建立和修改文件，不能删除任何文件（目录）；<br>
+i：不允许对这个文件进行任何修改（普通文件）；只能修改目录下的文件，不能建立或删除文件（目录）；<br>
+u：删除后，会保留数据块，以供恢复数据（防止意外删除）；<br>
+s：彻底删除，无法恢复文件；<br>
+[Link]：https://en.wikipedia.org/wiki/Chattr</p>
+</blockquote>
+</blockquote>
 <h2 id="time">Time</h2>
 <ul>
 <li>2020.10.22：视频时间130min，博客写笔记；</li>
+<li>2020.10.23：视频时间116min，博客写笔记；</li>
+<li>2020.10.24：视频时间139min，博客写笔记，完成单元测试；</li>
 </ul>
 
               </div>
@@ -259,7 +304,14 @@ chmod u=rwx,g=rw,o=r file；-&gt; 修改文件的权限；</p>
 <li><a href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%9A%84acl%E6%9D%83%E9%99%90">文件/目录的ACL权限</a>
 <ul>
 <li><a href="#%E6%96%87%E4%BB%B6%E7%9A%84acl%E6%9D%83%E9%99%90">文件的ACL权限</a></li>
-<li><a href="#%E7%9B%AE%E5%BD%95%E7%9A%84acl%E6%9D%83%E9%99%90">目录的ACL权限</a></li>
+<li><a href="#%E7%9B%AE%E5%BD%95%E7%9A%84acl%E6%9D%83%E9%99%90%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6">目录的ACL权限（目录下创建文件）</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9D%83%E9%99%90%E5%A7%94%E6%B4%BE">权限委派</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9">添加内容</a>
+<ul>
+<li><a href="#%E6%89%8B%E5%8A%A8%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81">手动修改密码</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90">修改文件权限</a></li>
 </ul>
 </li>
 <li><a href="#time">Time</a></li>
