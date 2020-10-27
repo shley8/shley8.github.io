@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-27T12:34:50.645Z</updated>
+    <updated>2020-10-27T13:52:28.755Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -11,12 +11,22 @@
     <icon>https://shley8.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shley8&apos;s Blogs</rights>
     <entry>
-        <title type="html"><![CDATA[第五章：学习周期五天（2020.10.26~2020.10.30）]]></title>
+        <title type="html"><![CDATA[第六章：学习周期两周（2020.10.28~2020.11.11）]]></title>
+        <id>https://shley8.github.io/post/di-liu-zhang-xue-xi-zhou-qi-liang-zhou-20201028~20201111/</id>
+        <link href="https://shley8.github.io/post/di-liu-zhang-xue-xi-zhou-qi-liang-zhou-20201028~20201111/">
+        </link>
+        <updated>2020-10-27T13:51:26.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>主要内容：</strong></p>
+<h2 id=""></h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[第五章：学习周期五天（2020.10.26~2020.10.27，已完成✅）]]></title>
         <id>https://shley8.github.io/post/di-wu-zhang-xue-xi-zhou-qi-wu-tian-20201026~20201030/</id>
         <link href="https://shley8.github.io/post/di-wu-zhang-xue-xi-zhou-qi-wu-tian-20201026~20201030/">
         </link>
         <updated>2020-10-27T07:29:41.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>主要内容：进程管理和服务（服务就是进程，进程不一定是服务）管理。</strong></p>
+        <content type="html"><![CDATA[<p><strong>主要内容：进程管理和服务（服务一定是进程，进程不一定是服务）管理。</strong></p>
 <h2 id="查看进程常用的指令以及参数">查看进程常用的指令以及参数</h2>
 <h3 id="ps">ps</h3>
 <ul>
@@ -131,13 +141,13 @@ COMMAND：产生此进程的命令；</p>
 <ul>
 <li>killall杀死一批同名的进程（例如：killall cat -&gt;杀死所有的cat进程）；</li>
 </ul>
-<h3 id="w">w</h3>
+<h3 id="wwho这是两个命令具体区别以后查看暂时分不清楚">w/who（这是两个命令，具体区别以后查看，暂时分不清楚）</h3>
 <ul>
 <li>查看当前登录系统的用户信息；</li>
 </ul>
-<h3 id="pkill">pkill</h3>
+<h3 id="pkill不常用">pkill（不常用）</h3>
 <ul>
-<li>一般用于把用户剔除；</li>
+<li>一般用于把用户剔除（pkill -t TTY）；</li>
 </ul>
 <h3 id="使用nice和renice调整进程的优先级">使用nice和renice调整进程的优先级</h3>
 <ul>
@@ -147,11 +157,16 @@ COMMAND：产生此进程的命令；</p>
 <blockquote>
 <p>nice值和进程的优先级值之间的值差20，优先级值最低为0（nice值最低为-20）；</p>
 </blockquote>
+<h3 id="前台进程和后台进程">前台进程和后台进程</h3>
+<ul>
+<li>当输入一个命令的时候，在结尾机上&amp;就可让它变成后台进程（注意，不要特意把前台进程变成后台服务，有的命令是没有意义的）；</li>
+</ul>
 <h2 id="sysytemctl管理服务">sysytemctl管理服务</h2>
 <p>systemd是PID为1的服务，RHEL6版本以前，是INIT，因为INIT是串行运行的，所以系统启动比较慢。</p>
 <h3 id="service">service</h3>
 <ul>
 <li>systemctl list-units -&gt; 查看systemd能管理的unit -&gt; 服务只是一种unit；</li>
+<li>systemctl list-unit-files -&gt; 查看unit的状态（enabled、disabled等）；</li>
 <li>systemctl status NetworkManager.service（省略.service也行）-&gt; 查看服务的状态；</li>
 <li>systemctl stop/start/restart NetworkManager.service -&gt; 停止/开始/重启服务；</li>
 <li>systemctl enable/disble NetworkManager -&gt; 允许/禁止开机自启动；</li>
@@ -164,12 +179,42 @@ COMMAND：产生此进程的命令；</p>
 <li>systemctl isolate graphical.target -&gt; 临时切换到图形界面；</li>
 <li>systemctl get-default -&gt; 下次启动的target；</li>
 <li>systemctl set-default graphical.taeget -&gt; 下次开机启动为graphical.target；</li>
-<li></li>
+</ul>
+<h2 id="拓展">拓展</h2>
+<ul>
+<li>查看cpu信息：
+<ul>
+<li>lscpu：查看cpu信息；</li>
+<li>cat /proc/cpuinfo：查看单个cpu的情况；</li>
+</ul>
+</li>
+<li>查看内存信息：
+<ul>
+<li>free： 查看内存（-h参数，人性化显示）；</li>
+<li>内存页存放的位置：/sys/devices/system/memory；</li>
+</ul>
+</li>
+<li>fdisk -l：查看磁盘；</li>
+<li>ethtool：查看网卡 -&gt; 一般是想确定网卡的带宽
+<ul>
+<li>ethtool + 网卡名字：查看单个网卡信息；</li>
+</ul>
+</li>
+<li>iftop：查看网卡的动态（epel的源）；</li>
+<li>iotop：查看磁盘的IO（baseos）；</li>
+<li>htop：用来取代top的（epel的源）；</li>
+<li>在生产环境中，服务都会有自己对应的service log，其他非服务组件都有syslog；
+<ul>
+<li>日志文件基本都放在/var/log下（service log？表示有疑问，自己是这么想的）；</li>
+<li>非服务组件的日志基本都放在/var/log/messages下（syslog？）；</li>
+<li>发现错误的时候，才会去看日志（日志主要的作用：故障排查-&gt;Troubleshooting-&gt;TS）；</li>
+</ul>
+</li>
 </ul>
 <h2 id="time">Time</h2>
 <ul>
 <li>2020.10.26：视频时间122min；</li>
-<li>2020.10.27：视频时间119min，博客记录，完成第五章测试；</li>
+<li>2020.10.27：视频时间209min，博客记录，完成第五章测试；</li>
 </ul>
 ]]></content>
     </entry>
