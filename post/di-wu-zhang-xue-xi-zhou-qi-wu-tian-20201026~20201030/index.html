@@ -1,0 +1,352 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>第五章：学习周期五天（2020.10.26~2020.10.30） | Shley8&#39;s Blogs</title>
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1603802088553">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="第五章：学习周期五天（2020.10.26~2020.10.30） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="主要内容：进程管理和服务（服务就是进程，进程不一定是服务）管理。
+查看进程常用的指令以及参数
+ps
+
+最常用的指令：ps aux | grep + 进程名（如：cat）；
+
+a 表示所有的前台进程；
+x 表示所有的后台进程；
+u 表示进程是..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://shley8.github.io">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1603802088553" alt="">
+  </a>
+  <h1 class="site-title">
+    Shley8&#39;s Blogs
+  </h1>
+  <p class="site-description">
+    宛若新生
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              第五章：学习周期五天（2020.10.26~2020.10.30）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-10-27
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><strong>主要内容：进程管理和服务（服务就是进程，进程不一定是服务）管理。</strong></p>
+<h2 id="查看进程常用的指令以及参数">查看进程常用的指令以及参数</h2>
+<h3 id="ps">ps</h3>
+<ul>
+<li>最常用的指令：ps aux | grep + 进程名（如：cat）；
+<ul>
+<li>a 表示所有的前台进程；</li>
+<li>x 表示所有的后台进程；</li>
+<li>u 表示进程是由哪个用户产生的；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>分析输出结果</li>
+</ul>
+<blockquote>
+<p>USER：该进程是由哪个用户产生的；<br>
+PID：进程ID（Process ID）；<br>
+%CPU：占用CPU的百分比；<br>
+%MEM：占用物理内存的百分比；<br>
+VSZ：占虚拟内存的大小；<br>
+RSS：站实际物理内存的大小；<br>
+TTT/PTS：TTY1是图形终端，TTY2<sub>6是字符界面终端，PTS0</sub>255表示虚拟终端；<br>
+STAT：进程状态</p>
+<blockquote>
+<p>R：运行<br>
+S：睡眠<br>
+T：停止<br>
++：位于后台<br>
+START：该进程启动的时间；<br>
+TIME：该进程占用CPU的时间，注意不是系统时间；<br>
+COMMAND：产生此进程的命令；</p>
+</blockquote>
+</blockquote>
+<hr>
+<ul>
+<li>ps -le 或ps -ef（不常用）
+<ul>
+<li>l 表示详细信息；</li>
+<li>e 表示显示所有进程；</li>
+</ul>
+</li>
+</ul>
+<h3 id="top">top</h3>
+<ul>
+<li>top主要是查看进程占系统资源（CPU、内存）的顺序，默认3s更新一次（-d参数）；</li>
+<li>top状态的一些指令：
+<ul>
+<li>？或h：显示交互模式的帮助；</li>
+<li>P：按CPU使用率排序（默认）；</li>
+<li>M：内存排序；</li>
+<li>N：PID的顺序排列；</li>
+<li>q：退出；</li>
+</ul>
+</li>
+</ul>
+<h3 id="pstree">pstree</h3>
+<ul>
+<li>pstree可以查看进程树，-d参数可以查看PID；</li>
+</ul>
+<h3 id="kill">kill</h3>
+<ul>
+<li>kill命令的本质是向进程发送信号；</li>
+<li>-l参数，查看所有进程信号；</li>
+<li>常见的进程号：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">信号代号</th>
+<th style="text-align:center">信号名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">SIGHUP</td>
+<td style="text-align:center">该信号让进程⽴即关闭，然后重新读取配置⽂件之后重启</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">SIGINT</td>
+<td style="text-align:center">程序终⽌信号，⽤户终⽌前台进程。相当去输出ctrl+c快捷键</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">SIGKILL</td>
+<td style="text-align:center">⽤来⽴即结束程序的运⾏，本信号不能被阻塞、忽略。⼀般⽤于强制终⽌进程</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">SIGTERM</td>
+<td style="text-align:center">正在结束进程的信号，kill命令的默认信号。有时如果进程已经发⽣问题，这个信号是⽆法正常终⽌进程的，我们这时才会尝试SIGKILL信号，也就是信号9</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">SIGCONT</td>
+<td style="text-align:center">信号可以让暂停的进程恢复执⾏，本信号不能被阻断</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td style="text-align:center">SIGSTOP</td>
+<td style="text-align:center">该信号可以暂停前台进程，相当于输⼊crtl+z快捷键。本信号不能被阻断</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>用法：kill + 信号（比如：9）+ 进程IP（PID）</li>
+</ul>
+<h3 id="killall">killall</h3>
+<ul>
+<li>killall杀死一批同名的进程（例如：killall cat -&gt;杀死所有的cat进程）；</li>
+</ul>
+<h3 id="w">w</h3>
+<ul>
+<li>查看当前登录系统的用户信息；</li>
+</ul>
+<h3 id="pkill">pkill</h3>
+<ul>
+<li>一般用于把用户剔除；</li>
+</ul>
+<h3 id="使用nice和renice调整进程的优先级">使用nice和renice调整进程的优先级</h3>
+<ul>
+<li>nice -n -20 cat /dev/zero /dev/null &amp; -&gt; 调整一个后台进程的nice值为-20；</li>
+<li>renice -n -20 PID -&gt; 冲新调整一个进程IP为PID的进程使得它的nice值为-20；</li>
+</ul>
+<blockquote>
+<p>nice值和进程的优先级值之间的值差20，优先级值最低为0（nice值最低为-20）；</p>
+</blockquote>
+<h2 id="sysytemctl管理服务">sysytemctl管理服务</h2>
+<p>systemd是PID为1的服务，RHEL6版本以前，是INIT，因为INIT是串行运行的，所以系统启动比较慢。</p>
+<h3 id="service">service</h3>
+<ul>
+<li>systemctl list-units -&gt; 查看systemd能管理的unit -&gt; 服务只是一种unit；</li>
+<li>systemctl status NetworkManager.service（省略.service也行）-&gt; 查看服务的状态；</li>
+<li>systemctl stop/start/restart NetworkManager.service -&gt; 停止/开始/重启服务；</li>
+<li>systemctl enable/disble NetworkManager -&gt; 允许/禁止开机自启动；</li>
+<li>systemctl is-enabled/activate NetworkManager -&gt; 服务是否开机自启动/正在运行（脚本中用的多）；</li>
+</ul>
+<h3 id="target">target</h3>
+<p>target是service的box。</p>
+<ul>
+<li>systemctl isolate multi-user.target -&gt; 临时切换到字符界面；</li>
+<li>systemctl isolate graphical.target -&gt; 临时切换到图形界面；</li>
+<li>systemctl get-default -&gt; 下次启动的target；</li>
+<li>systemctl set-default graphical.taeget -&gt; 下次开机启动为graphical.target；</li>
+<li></li>
+</ul>
+<h2 id="time">Time</h2>
+<ul>
+<li>2020.10.26：视频时间122min；</li>
+<li>2020.10.27：视频时间119min，博客记录，完成第五章测试；</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4%E4%BB%A5%E5%8F%8A%E5%8F%82%E6%95%B0">查看进程常用的指令以及参数</a>
+<ul>
+<li><a href="#ps">ps</a></li>
+<li><a href="#top">top</a></li>
+<li><a href="#pstree">pstree</a></li>
+<li><a href="#kill">kill</a></li>
+<li><a href="#killall">killall</a></li>
+<li><a href="#w">w</a></li>
+<li><a href="#pkill">pkill</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8nice%E5%92%8Crenice%E8%B0%83%E6%95%B4%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7">使用nice和renice调整进程的优先级</a></li>
+</ul>
+</li>
+<li><a href="#sysytemctl%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1">sysytemctl管理服务</a>
+<ul>
+<li><a href="#service">service</a></li>
+<li><a href="#target">target</a></li>
+</ul>
+</li>
+<li><a href="#time">Time</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://shley8.github.io/post/di-si-zhang/">
+              <h3 class="post-title">
+                第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅）
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/Shley8" target="_blank">Shley8</a>
+  <a class="rss" href="https://shley8.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

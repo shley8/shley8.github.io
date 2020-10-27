@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-24T03:36:06.710Z</updated>
+    <updated>2020-10-27T12:34:50.645Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -10,6 +10,169 @@
     <logo>https://shley8.github.io/images/avatar.png</logo>
     <icon>https://shley8.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Shley8&apos;s Blogs</rights>
+    <entry>
+        <title type="html"><![CDATA[第五章：学习周期五天（2020.10.26~2020.10.30）]]></title>
+        <id>https://shley8.github.io/post/di-wu-zhang-xue-xi-zhou-qi-wu-tian-20201026~20201030/</id>
+        <link href="https://shley8.github.io/post/di-wu-zhang-xue-xi-zhou-qi-wu-tian-20201026~20201030/">
+        </link>
+        <updated>2020-10-27T07:29:41.000Z</updated>
+        <content type="html"><![CDATA[<p><strong>主要内容：进程管理和服务（服务就是进程，进程不一定是服务）管理。</strong></p>
+<h2 id="查看进程常用的指令以及参数">查看进程常用的指令以及参数</h2>
+<h3 id="ps">ps</h3>
+<ul>
+<li>最常用的指令：ps aux | grep + 进程名（如：cat）；
+<ul>
+<li>a 表示所有的前台进程；</li>
+<li>x 表示所有的后台进程；</li>
+<li>u 表示进程是由哪个用户产生的；</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>分析输出结果</li>
+</ul>
+<blockquote>
+<p>USER：该进程是由哪个用户产生的；<br>
+PID：进程ID（Process ID）；<br>
+%CPU：占用CPU的百分比；<br>
+%MEM：占用物理内存的百分比；<br>
+VSZ：占虚拟内存的大小；<br>
+RSS：站实际物理内存的大小；<br>
+TTT/PTS：TTY1是图形终端，TTY2<sub>6是字符界面终端，PTS0</sub>255表示虚拟终端；<br>
+STAT：进程状态</p>
+<blockquote>
+<p>R：运行<br>
+S：睡眠<br>
+T：停止<br>
++：位于后台<br>
+START：该进程启动的时间；<br>
+TIME：该进程占用CPU的时间，注意不是系统时间；<br>
+COMMAND：产生此进程的命令；</p>
+</blockquote>
+</blockquote>
+<hr>
+<ul>
+<li>ps -le 或ps -ef（不常用）
+<ul>
+<li>l 表示详细信息；</li>
+<li>e 表示显示所有进程；</li>
+</ul>
+</li>
+</ul>
+<h3 id="top">top</h3>
+<ul>
+<li>top主要是查看进程占系统资源（CPU、内存）的顺序，默认3s更新一次（-d参数）；</li>
+<li>top状态的一些指令：
+<ul>
+<li>？或h：显示交互模式的帮助；</li>
+<li>P：按CPU使用率排序（默认）；</li>
+<li>M：内存排序；</li>
+<li>N：PID的顺序排列；</li>
+<li>q：退出；</li>
+</ul>
+</li>
+</ul>
+<h3 id="pstree">pstree</h3>
+<ul>
+<li>pstree可以查看进程树，-d参数可以查看PID；</li>
+</ul>
+<h3 id="kill">kill</h3>
+<ul>
+<li>kill命令的本质是向进程发送信号；</li>
+<li>-l参数，查看所有进程信号；</li>
+<li>常见的进程号：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">信号代号</th>
+<th style="text-align:center">信号名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">SIGHUP</td>
+<td style="text-align:center">该信号让进程⽴即关闭，然后重新读取配置⽂件之后重启</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">SIGINT</td>
+<td style="text-align:center">程序终⽌信号，⽤户终⽌前台进程。相当去输出ctrl+c快捷键</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">SIGKILL</td>
+<td style="text-align:center">⽤来⽴即结束程序的运⾏，本信号不能被阻塞、忽略。⼀般⽤于强制终⽌进程</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">SIGTERM</td>
+<td style="text-align:center">正在结束进程的信号，kill命令的默认信号。有时如果进程已经发⽣问题，这个信号是⽆法正常终⽌进程的，我们这时才会尝试SIGKILL信号，也就是信号9</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">SIGCONT</td>
+<td style="text-align:center">信号可以让暂停的进程恢复执⾏，本信号不能被阻断</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td style="text-align:center">SIGSTOP</td>
+<td style="text-align:center">该信号可以暂停前台进程，相当于输⼊crtl+z快捷键。本信号不能被阻断</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>用法：kill + 信号（比如：9）+ 进程IP（PID）</li>
+</ul>
+<h3 id="killall">killall</h3>
+<ul>
+<li>killall杀死一批同名的进程（例如：killall cat -&gt;杀死所有的cat进程）；</li>
+</ul>
+<h3 id="w">w</h3>
+<ul>
+<li>查看当前登录系统的用户信息；</li>
+</ul>
+<h3 id="pkill">pkill</h3>
+<ul>
+<li>一般用于把用户剔除；</li>
+</ul>
+<h3 id="使用nice和renice调整进程的优先级">使用nice和renice调整进程的优先级</h3>
+<ul>
+<li>nice -n -20 cat /dev/zero /dev/null &amp; -&gt; 调整一个后台进程的nice值为-20；</li>
+<li>renice -n -20 PID -&gt; 冲新调整一个进程IP为PID的进程使得它的nice值为-20；</li>
+</ul>
+<blockquote>
+<p>nice值和进程的优先级值之间的值差20，优先级值最低为0（nice值最低为-20）；</p>
+</blockquote>
+<h2 id="sysytemctl管理服务">sysytemctl管理服务</h2>
+<p>systemd是PID为1的服务，RHEL6版本以前，是INIT，因为INIT是串行运行的，所以系统启动比较慢。</p>
+<h3 id="service">service</h3>
+<ul>
+<li>systemctl list-units -&gt; 查看systemd能管理的unit -&gt; 服务只是一种unit；</li>
+<li>systemctl status NetworkManager.service（省略.service也行）-&gt; 查看服务的状态；</li>
+<li>systemctl stop/start/restart NetworkManager.service -&gt; 停止/开始/重启服务；</li>
+<li>systemctl enable/disble NetworkManager -&gt; 允许/禁止开机自启动；</li>
+<li>systemctl is-enabled/activate NetworkManager -&gt; 服务是否开机自启动/正在运行（脚本中用的多）；</li>
+</ul>
+<h3 id="target">target</h3>
+<p>target是service的box。</p>
+<ul>
+<li>systemctl isolate multi-user.target -&gt; 临时切换到字符界面；</li>
+<li>systemctl isolate graphical.target -&gt; 临时切换到图形界面；</li>
+<li>systemctl get-default -&gt; 下次启动的target；</li>
+<li>systemctl set-default graphical.taeget -&gt; 下次开机启动为graphical.target；</li>
+<li></li>
+</ul>
+<h2 id="time">Time</h2>
+<ul>
+<li>2020.10.26：视频时间122min；</li>
+<li>2020.10.27：视频时间119min，博客记录，完成第五章测试；</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅）]]></title>
         <id>https://shley8.github.io/post/di-si-zhang/</id>
