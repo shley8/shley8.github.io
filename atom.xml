@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-10-29T14:42:17.197Z</updated>
+    <updated>2020-11-01T03:46:17.077Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -180,7 +180,7 @@ Network -&gt; 位置区域，不用管；<br>
 <blockquote>
 <p>因为为了生产方便，企业在生产时都用1000作为进制单位而不会是1024.</p>
 </blockquote>
-<h2 id="局域网">局域网</h2>
+<h2 id="第三章局域网以太网协议数据链路层">第三章：局域网（以太网协议，数据链路层）</h2>
 <h3 id="三种网络">三种网络</h3>
 <p>Local Area Network（LAN） -&gt; 局域网；<br>
 Campus Netwok（CAN）-&gt; 园区网；<br>
@@ -293,9 +293,144 @@ Switch：硬件实现数据转发；</p>
 <li>广播域到路由器（Router，三层设备）停止；</li>
 <li>冲突域存在于路由器之间，到路由器停止；</li>
 </ul>
+<h2 id="传输介质">传输介质</h2>
+<h3 id="铜同轴电缆">（铜）同轴电缆</h3>
+<ul>
+<li>Coaxial：同轴电缆；</li>
+<li>组成：铜芯（传输数据）、塑料（保护铜芯）、绝缘层（防止信号干扰）、保护套（保护绝缘层）；</li>
+<li>不再使用，同轴电缆使用铜比较多，因此成本比较高，且传输距离不够远；</li>
+</ul>
+<h3 id="双绞线网线">双绞线（网线）</h3>
+<ul>
+<li>特点：
+<ul>
+<li>物理传输时最流行的传输介质；</li>
+<li>传输电信号；</li>
+</ul>
+</li>
+<li>双绞线双绞是因为防止电磁干扰；</li>
+<li>组成：八根线；</li>
+<li>分类
+<ul>
+<li>屏蔽双绞线（有金属绝缘层）-&gt; 通常屏蔽双绞线都能用光纤代替，因此屏蔽双绞线使用的非常少，我们所见到的都是非屏蔽双绞线，简称STP；</li>
+<li>非屏蔽双绞线-&gt; 简称UTP；</li>
+</ul>
+</li>
+<li>EIA/TIA组织定义的双绞线的线序标准
+<ul>
+<li>橙白、橙、绿白、绿、蓝白、蓝、棕白、棕 -&gt;标准线序</li>
+<li>橙白，橙，绿白，蓝，蓝白，绿，棕白，棕 -&gt;T568B线序；</li>
+<li>绿白，绿，橙白，蓝，蓝白，橙，棕白，棕 -&gt;T568A线序；</li>
+</ul>
+</li>
+<li>如果两端的线序一样，那么就叫直通线，不一样，就叫交叉线；现在除思科以外（思科以前认为，一个专业的网络工程师，不可能分不清楚直通线和交叉线，但是后来也换成自适应接口了），其他厂商的设备接口都是自适应。</li>
+</ul>
+<h3 id="光纤">光纤</h3>
+<ul>
+<li>传输光信号；</li>
+<li>组成：光芯（主要成分二氧化硅，也是镜子的原料）、一层保护膜、二层保护膜；</li>
+</ul>
+<h2 id="ip协议网络层的代表">IP协议（网络层的代表）</h2>
+<h3 id="ip协议">IP协议</h3>
+<ul>
+<li>特点
+<ul>
+<li>工作在网络层</li>
+<li>无连接的协议
+<ul>
+<li>不可靠（尽最大努力交付数据）</li>
+<li>没重传数据机制</li>
+</ul>
+</li>
+<li>IPv4和IPv6</li>
+<li>分层编址
+<ul>
+<li>IP地址由两部分组成：网络位（Network）和主机位（Host）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>五类地址（前八位）
+<ul>
+<li>A：0xxxxxxx</li>
+<li>B：10xxxxxx</li>
+<li>C：110xxxxx</li>
+<li>D：1110xxxx</li>
+<li>E：11110xxx</li>
+<li>A、B、C三类地址是主机地址；
+<ul>
+<li>主机位全为0，代表这是一个网络地址</li>
+<li>主机位全为1，代表这是一个广播地址
+<ul>
+<li>255.255.255.255：本地广播地址 -&gt;很有可能这台电脑不知道自己所处的位置，发出请求后DHCP服务器可以给它配置IP，这是一条用来请求IP地址的请求；</li>
+<li>10.255.255.255：表明这是一个A段网络的该网络的广播地址；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>127网段被保留作为环回地址，可使用ping 127.0.0.1检测本地网卡有无损坏；<br>
+|地址类型|私有地址范围|<br>
+|:---😐:---😐<br>
+|A|10.0.0.0 to 10.255.255.255|<br>
+|B|172.16.0.0 to 172.31.255.255|<br>
+|C|192.168.0.0 to 192.168.255.255|</li>
+</ul>
+</li>
+</ul>
+<h2 id="传输层协议">传输层协议</h2>
+<h2 id="思科iso操作">思科ISO操作</h2>
+<h3 id="软件需要">软件需要</h3>
+<p>EVE-Student（虚拟机文件）、EVE工具、VMware Workstation、Broser、secureCRT或者Putty（SSH工具）；</p>
+<h3 id="三种模式">三种模式</h3>
+<ul>
+<li>用户模式：&gt;</li>
+<li>特权模式：#，从用户模式进入/退出，输入enable /disable</li>
+<li>全局模式：从特权模式进入/退出，输入configure terminal/exit</li>
+</ul>
+<h3 id="ip配置">IP配置</h3>
+<ul>
+<li>enable进入特权模式，configure terminal进入全局模式；
+<ul>
+<li>全局模式可以使用特权模式的命令，只需要在前面加上do即可；</li>
+<li>hostname + 设备名：修改设备的名称；（命令不区分大小写）</li>
+<li>配置设备IP
+<ul>
+<li>进入路由器接口：interface ethernet 0/0；</li>
+<li>配置ip地址：ip address 192.168.1.10 255.255.255.0；</li>
+</ul>
+</li>
+<li>开启设备（默认是双down）：no shutdown</li>
+</ul>
+</li>
+<li>exit退出全局模式进入特权模式；
+<ul>
+<li>查看单个IP配置信息：show interfaces ethernet 0/0；（默认设置为双down）</li>
+<li>查看所有配置的ip信息：show ip interface brief；</li>
+</ul>
+</li>
+</ul>
+<h3 id="查配置文件">查配置文件</h3>
+<ul>
+<li>查看当前系统内存中的配置文件；
+<ul>
+<li>enable ；</li>
+<li>show running-configure；</li>
+</ul>
+</li>
+<li>让当前的系统的配置文件变成系统启动会自动加载的配置文件
+<ul>
+<li>因为命令会存在内存当中，当设备重启之后，内存中数据会消失，命令以及配置文件都会消失；</li>
+<li>enable；</li>
+<li>copy running-configure start-configure（write）；</li>
+</ul>
+</li>
+<li>清空下次开机的默认文件：erase start-configure（erase nvram、write erase）；</li>
+</ul>
 <h2 id="time">Time</h2>
 <p>2020.10.28：视频时间62min，博客写笔记；<br>
-2020.10.29：视频时间159min，博客写笔记；</p>
+2020.10.29：视频时间159min，博客写笔记；<br>
+2020.10.30：视频时间35min，博客写笔记；<br>
+2020.10.31：视频时间198min，博客写笔记；</p>
 ]]></content>
     </entry>
     <entry>
