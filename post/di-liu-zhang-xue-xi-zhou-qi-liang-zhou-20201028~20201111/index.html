@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第六章：学习周期两周（2020.10.28~2020.11.11） | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1604202374979">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1604202494114">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第六章：学习周期两周（2020.10.28~2020.11.11） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -28,7 +28,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1604202374979" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1604202494114" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -412,7 +412,8 @@ Switch：硬件实现数据转发；</p>
 <h2 id="ip协议网络层的代表">IP协议（网络层的代表）</h2>
 <h3 id="ip协议">IP协议</h3>
 <ul>
-<li>特点
+<li>
+<p>特点</p>
 <ul>
 <li>工作在网络层</li>
 <li>无连接的协议
@@ -429,14 +430,15 @@ Switch：硬件实现数据转发；</p>
 </li>
 </ul>
 </li>
-<li>五类地址（前八位）
+<li>
+<p>五类地址（前八位）</p>
 <ul>
 <li>A：0xxxxxxx</li>
 <li>B：10xxxxxx</li>
 <li>C：110xxxxx</li>
 <li>D：1110xxxx</li>
 <li>E：11110xxx</li>
-<li>A、B、C三类地址是主机地址；
+<li>A、B、C三类地址是主机地址
 <ul>
 <li>主机位全为0，代表这是一个网络地址</li>
 <li>主机位全为1，代表这是一个广播地址
@@ -447,13 +449,30 @@ Switch：硬件实现数据转发；</p>
 </li>
 </ul>
 </li>
-<li>127网段被保留作为环回地址，可使用ping 127.0.0.1检测本地网卡有无损坏；<br>
-|地址类型|私有地址范围|<br>
-|:---😐:---😐<br>
-|A|10.0.0.0 to 10.255.255.255|<br>
-|B|172.16.0.0 to 172.31.255.255|<br>
-|C|192.168.0.0 to 192.168.255.255|</li>
+<li>127网段被保留作为环回地址，可使用ping 127.0.0.1检测本地网卡有无损坏；</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">地址类型</th>
+<th style="text-align:center">私有地址范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">10.0.0.0 to 10.255.255.255</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">172.16.0.0 to 172.31.255.255</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">192.168.0.0 to 192.168.255.255</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 <h2 id="传输层协议">传输层协议</h2>
