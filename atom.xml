@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-11-01T03:48:15.815Z</updated>
+    <updated>2020-11-02T15:03:26.509Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -394,7 +394,61 @@ Switch：硬件实现数据转发；</p>
 </tr>
 </tbody>
 </table>
+<h3 id="ip数据包头字段解析">IP数据包头字段解析</h3>
+<ul>
+<li>20个字节的固定长度
+<ul>
+<li>IP头字段通常都是20个字节（Byte，位）；</li>
+<li>第一组<br>
+* Ver.（版本）：4bit，0100代表IPv4，0101代表IPv6；<br>
+* IHL（Ip Header Length，IP头长度）：4bit，通常情况下（99%）值为0101（表示ip头长度是20个字节 -&gt; 0101换算成十进制是5，此字段和IP头长度的关系是 *4的关系，即ip头字段长度=IHL*4）；<br>
+* Service Type（服务类型）：8bit；<br>
+* Total Length（总长度）：16bit，IP数据包的总长度（IP头字段+IP数据包），理论上最大为65535（2^16）Byte，但是实际上最多为1500Byte（MTU，也能调，但是一般不调）；</li>
+<li>第二组，这三个字段用来使数据包分片<br>
+* Identification（标识）：16bit，用来表明数据片属于哪个数据包；<br>
+* Flag（标志）：3bit，使用DF（Deny Fragment，拒绝分片）/MF（More Fragment，更多的分片）字段来表明最后一个数据片是不是已经组合了；<br>
+* Fragment Offset（片偏移）：13bit，用来让属于相同数据包的数据片按照顺序组合；</li>
+<li>第三组
+<ul>
+<li>Time to Live（存活时间）：8bit，每经过一个三层设备，该数值减一，当该数值为0时，三层设备会把该数据包丢弃，用来防止数据包成环；</li>
+<li>Protocol（协议）：8bit，表示上层使用的协议；</li>
+<li>Header Checksum（首部检验和）：16bit，检验包头是好是坏；</li>
+</ul>
 </li>
+<li>第四组
+<ul>
+<li>Source Address（源地址）：32bit</li>
+</ul>
+</li>
+<li>第五组
+<ul>
+<li>Destination Address（目的地址）：32bit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>可选长度</p>
+<ul>
+<li>第六组
+<ul>
+<li>Options（可选项）：</li>
+<li>Padding（填充）：当头部不满足4的整数倍字节的时候，需要用该字段填充；</li>
+</ul>
+</li>
+</ul>
+<h3 id="dns">DNS</h3>
+<ul>
+<li>自己配置自己的DNS -&gt; 默认的DNS服务器是自己使用网络的网络运营商提供的；</li>
+</ul>
+</li>
+</ul>
+<h3 id="划分子网和vlsm技术">划分子网和VLSM技术</h3>
+<ul>
+<li>子网掩码的定义：连续的1和0组成的4位的0，1数字，跟IP地址一起使用，使IP地址的利用率更高；</li>
+<li>VLSM技术：增加子网掩码长度，使得网络划分的更为细致，节约网络地址；</li>
 </ul>
 <h2 id="传输层协议">传输层协议</h2>
 <h2 id="思科iso操作">思科ISO操作</h2>
@@ -449,7 +503,9 @@ Switch：硬件实现数据转发；</p>
 <p>2020.10.28：视频时间62min，博客写笔记；<br>
 2020.10.29：视频时间159min，博客写笔记；<br>
 2020.10.30：视频时间35min，博客写笔记；<br>
-2020.10.31：视频时间198min，博客写笔记；</p>
+2020.10.31：视频时间198min，博客写笔记；<br>
+2020.11.1：视频时间130min；<br>
+2020.11.2：视频时间72min，博客写笔记；</p>
 ]]></content>
     </entry>
     <entry>
