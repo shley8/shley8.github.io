@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅） | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1605604341959">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1605604780508">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第四章：学习周期六天（2020.10.22~2020.10.24，已完成✅） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -23,7 +23,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1605604341959" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1605604780508" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -118,18 +118,28 @@ rwx：表示该目录有读、写的权限；<br>
 </ul>
 <h2 id="修改权限">修改权限</h2>
 <ul>
-<li>chown + 用户名 +文件名 -&gt; 修改文件所有者；</li>
-<li>chown  用户名: 组名 + 文件名 -&gt; 修改文件所有者+所在组；</li>
-<li>chgrp + 组名 +文件名 -&gt; 修改文件所有组；</li>
-<li>chmod + u/g/o + +/-/= +r/w/x/ + 文件名 -&gt; 给u（user，所有者）、g（group，所在组）、o（other，其他用户）增加、减少或者等于r/w/x权限；</li>
+<li>
+<p>chown + 用户名 +文件名 -&gt; 修改文件所有者；</p>
+</li>
+<li>
+<p>chown  用户名: 组名 + 文件名 -&gt; 修改文件所有者+所在组；</p>
+</li>
+<li>
+<p>chgrp + 组名 +文件名 -&gt; 修改文件所有组；</p>
+</li>
+<li>
+<p>chmod + u/g/o + +/-/= +r/w/x/ + 文件名 -&gt; 给u（user，所有者）、g（group，所在组）、o（other，其他用户）增加、减少或者等于r/w/x权限；</p>
+</li>
+<li>
+<p>对于目录文件的解释：所有者对目录有写权限（w），可以删除目录里的文件，不论这个文件的所有者是谁（目录的权限和目录里文件的权限是两码事）；</p>
+</li>
+<li>
+<p>对于文普通文件w权限的解释：一个文件，所有者和root可以用强（比如无写权限可以使用:wq!强制保存），其他的用户都得按照规则来；</p>
+</li>
+<li>
+<p>对于普通文件x权限的解释：当一个普通文件有x权限时，系统默认为此文件为脚本文件，文件里的内容全部按照命令来执行（运行方法：绝对路径/相对路径 -&gt; ./文件名 -&gt; 推荐使用绝对路径来执行）；</p>
+</li>
 </ul>
-<hr>
-<ul>
-<li>对于目录文件的解释：所有者对目录有写权限（w），可以删除目录里的文件，不论这个文件的所有者是谁（目录的权限和目录里文件的权限是两码事）；</li>
-<li>对于文普通文件w权限的解释：一个文件，所有者和root可以用强（比如无写权限可以使用:wq!强制保存），其他的用户都得按照规则来；</li>
-<li>对于普通文件x权限的解释：当一个普通文件有x权限时，系统默认为此文件为脚本文件，文件里的内容全部按照命令来执行（运行方法：绝对路径/相对路径 -&gt; ./文件名 -&gt; 推荐使用绝对路径来执行）；</li>
-</ul>
-<hr>
 <table>
 <thead>
 <tr>
@@ -247,9 +257,7 @@ setfacl -m d:user:shley:--- test</p>
 </ul>
 <h2 id="扩展">扩展</h2>
 <h3 id="手动修改密码">手动修改密码</h3>
-<ol>
-<li>openssl passwd 命令：输入要设置的密码明文，随后将生成的明文编辑到对应的用户的/etc/shadow文件即可；</li>
-</ol>
+<p>openssl passwd 命令：输入要设置的密码明文，随后将生成的明文编辑到对应的用户的/etc/shadow文件即可；</p>
 <h3 id="修改文件权限">修改文件权限</h3>
 <ul>
 <li>lsattr + 文件名查看文件属性；</li>
