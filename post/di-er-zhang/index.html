@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第二章：学习周期一周（2020.10.09~2020.10.16，未完成❌） | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1604329404517">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1605604341959">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第二章：学习周期一周（2020.10.09~2020.10.16，未完成❌） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -23,7 +23,7 @@ Shell主要分为两种..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1604329404517" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1605604341959" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -94,7 +94,6 @@ Shell主要分为两种..." />
 <h2 id="shell介绍">Shell介绍</h2>
 <p>Shell主要分为两种，CLI（Conmand Line Inerface，命令行接口e）和GUI（Graphical User Interface，图形用户接口），操作系统的工作原理：用户 -&gt; Shell -&gt; Kernal（包含Drive可驱动硬件） -&gt; Hardware -&gt; 执行结果反馈给用户。</p>
 <h2 id="linux各个目录的作用">Linux各个目录的作用</h2>
-<hr>
 <ul>
 <li>root：root的家目录；</li>
 <li>/home：用户的家目录（useradd user +passwd user，增加user用户并且修改user用户的密码）；</li>
@@ -112,11 +111,10 @@ Shell主要分为两种..." />
 <li>/srv：存放资源文件；</li>
 <li>/sys：存放系统资源文件；</li>
 <li>/tmp：存放临时文件（重要）；</li>
-<li>/var：存放日志的文件（重要）；<br>
-<strong>Linux中的带箭头的图标同Windows一样都是快捷方式（例如：/bin，/sbin，/lib，/lib64，指向/usr中的对应的文件）。</strong></li>
+<li>/var：存放日志的文件（重要）；</li>
 </ul>
+<p><strong>Linux中的带箭头的图标同Windows一样都是快捷方式（例如：/bin，/sbin，/lib，/lib64，指向/usr中的对应的文件）。</strong></p>
 <h2 id="命令">命令</h2>
-<hr>
 <h3 id="小技巧">小技巧</h3>
 <ul>
 <li>Ctrl +Shift + t 可创建多个shell界面；</li>
@@ -211,25 +209,45 @@ Shell主要分为两种..." />
 <li>{1..100}：有顺序的排列 -&gt; touch aa{1..100} -&gt; 创建以aa开头，1~100结尾的100个文件；</li>
 </ul>
 <h2 id="vim的操作">Vim的操作</h2>
-<hr>
 <h3 id="命令模式">命令模式</h3>
 <p>默认使用vim打开一个文本文件，进入的就是命令模式：</p>
 <ul>
-<li>hjkl：对应小键盘的左、下、上、右；</li>
-<li>gg：鼠标光标切换到文本开头；</li>
-<li>nG：鼠标光标切换到第n行开头；</li>
-<li>x：删除鼠标光标的右边的文本；</li>
-<li>X：删除鼠标光标左边的文本；</li>
-<li>u：恢复上次操作的内容（理论上可以无限恢复，一直按住u即可）；</li>
-</ul>
-<hr>
-<ul>
-<li>dd：剪切光标当前这行；</li>
-<li>ndd：剪切光标当前这行以及下面n-1行；</li>
-<li>yy：复制光标当前这行；</li>
-<li>nyy：复制光标当前这行以及下面n-1行；</li>
-<li>p：将dd或yy的内容粘贴到当前行的下面；</li>
-<li>P：将dd或yy的内容粘贴到当前行的上面；</li>
+<li>
+<p>hjkl：对应小键盘的左、下、上、右；</p>
+</li>
+<li>
+<p>gg：鼠标光标切换到文本开头；</p>
+</li>
+<li>
+<p>nG：鼠标光标切换到第n行开头；</p>
+</li>
+<li>
+<p>x：删除鼠标光标的右边的文本；</p>
+</li>
+<li>
+<p>X：删除鼠标光标左边的文本；</p>
+</li>
+<li>
+<p>u：恢复上次操作的内容（理论上可以无限恢复，一直按住u即可）；</p>
+</li>
+<li>
+<p>dd：剪切光标当前这行；</p>
+</li>
+<li>
+<p>ndd：剪切光标当前这行以及下面n-1行；</p>
+</li>
+<li>
+<p>yy：复制光标当前这行；</p>
+</li>
+<li>
+<p>nyy：复制光标当前这行以及下面n-1行；</p>
+</li>
+<li>
+<p>p：将dd或yy的内容粘贴到当前行的下面；</p>
+</li>
+<li>
+<p>P：将dd或yy的内容粘贴到当前行的上面；</p>
+</li>
 </ul>
 <h3 id="插入模式">插入模式</h3>
 <p>在命令模式下，输入i、I、a、A、o、O均可进入到插入模式：</p>
@@ -267,9 +285,7 @@ Shell主要分为两种..." />
 <li>在使用vim文本编辑器操作的时候，会在当前目录下生成一个.swp的文件，我们的操作是对这个swp文件进行操作的，当选择保存的时候，原文件会和swp文件进行比较，然后更新文件内容。</li>
 <li>在当编辑的时候出现意外时，可恢复该文本文件内容，使用vim 编辑器编辑该文件，选择“r”，然后选择回车即可。</li>
 </ul>
-<hr>
 <h2 id="重定向和管道">重定向和管道</h2>
-<hr>
 <h3 id="输出重定向">输出重定向</h3>
 <ul>
 <li>&gt;：正确的内容覆盖（创建）；</li>
@@ -371,15 +387,17 @@ expr （非交互界面）<br>
 <li>文件后缀名只是文件打开的方式，当文件创建的时候文件的类型就决定了（比如.txt文件后缀修改为.pdf是打不开的）；</li>
 <li>echo $PATH：当前用户使用命令的时候系统查找命令的路径，root依次为：/usr/local/sbin；/usr/local/bin；/usr/sbin；/usr/bin；/root/bin；alias；普通用户的话涉及到的sbin和bin目录会反过来（大致如此，此项总结不严谨）；</li>
 </ul>
-<h2 id="20201009视频时间92min写博客20201010视频时间73min写博客20201013视频时间139min写博客20201014视频时间140min写博客20201015视频时间76min写博客20201016视频时间136min写博客20201017视频时间68min20201018视频时间87min写博客完成单元测试">2020.10.09：视频时间92min，写博客；<br>
-2020.10.10：视频时间73min，写博客；<br>
-2020.10.13：视频时间139min，写博客；<br>
-2020.10.14：视频时间140min，写博客；<br>
-2020.10.15：视频时间76min，写博客；<br>
-2020.10.16：视频时间136min，写博客；<br>
-2020.10.17：视频时间68min；<br>
-2020.10.18：视频时间87min，写博客，完成单元测试；</h2>
-<p>需要加快进度了，懒懒散散不可取，比计划拖后两天完成（2020.10.18完成）。</p>
+<h2 id="time">Time</h2>
+<ol>
+<li>2020.10.09：视频时间92min，写博客；</li>
+<li>2020.10.10：视频时间73min，写博客；</li>
+<li>2020.10.13：视频时间139min，写博客；</li>
+<li>2020.10.14：视频时间140min，写博客；</li>
+<li>2020.10.15：视频时间76min，写博客；</li>
+<li>2020.10.16：视频时间136min，写博客；</li>
+<li>2020.10.17：视频时间68min；</li>
+<li>2020.10.18：视频时间87min，写博客，完成单元测试；</li>
+</ol>
 
               </div>
               <div class="toc-container">
@@ -429,14 +447,7 @@ expr （非交互界面）<br>
 </ul>
 </li>
 <li><a href="#%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93">知识点总结</a></li>
-<li><a href="#20201009%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B492min%E5%86%99%E5%8D%9A%E5%AE%A220201010%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B473min%E5%86%99%E5%8D%9A%E5%AE%A220201013%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B4139min%E5%86%99%E5%8D%9A%E5%AE%A220201014%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B4140min%E5%86%99%E5%8D%9A%E5%AE%A220201015%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B476min%E5%86%99%E5%8D%9A%E5%AE%A220201016%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B4136min%E5%86%99%E5%8D%9A%E5%AE%A220201017%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B468min20201018%E8%A7%86%E9%A2%91%E6%97%B6%E9%97%B487min%E5%86%99%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%88%90%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95">2020.10.09：视频时间92min，写博客；<br>
-2020.10.10：视频时间73min，写博客；<br>
-2020.10.13：视频时间139min，写博客；<br>
-2020.10.14：视频时间140min，写博客；<br>
-2020.10.15：视频时间76min，写博客；<br>
-2020.10.16：视频时间136min，写博客；<br>
-2020.10.17：视频时间68min；<br>
-2020.10.18：视频时间87min，写博客，完成单元测试；</a></li>
+<li><a href="#time">Time</a></li>
 </ul>
 </li>
 </ul>
