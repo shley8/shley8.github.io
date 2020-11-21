@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-11-17T09:19:44.557Z</updated>
+    <updated>2020-11-21T02:39:55.137Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -451,6 +451,45 @@ Switch：硬件实现数据转发；</p>
 <li>VLSM技术：增加子网掩码长度，使得网络划分的更为细致，节约网络地址；</li>
 </ul>
 <h2 id="传输层协议">传输层协议</h2>
+<h3 id="传输层的功能">传输层的功能</h3>
+<ul>
+<li>会话多路复用（为什么一个IP地址可以做很多事情？）；
+<ul>
+<li>五元组：源IP地址、目的IP地址、源端口号、目的端口号、协议号（Protocol）；</li>
+</ul>
+</li>
+<li>表明不同的应用程序；</li>
+<li>分段（第一次对传输的数据进行划分，不彻底的话会在网络层进行分片）；</li>
+<li>流量控制；</li>
+<li>有连接；
+<ul>
+<li>可靠传输（可靠性的基础：数据的传输是有序的、数据的传输是有确认机制的、有数据重传机制、可靠性的前提是建立一个连接  ||  对比无连接协议的特性，IP协议）；</li>
+</ul>
+</li>
+</ul>
+<h3 id="tcp">TCP</h3>
+<h3 id="udp">UDP</h3>
+<h3 id="icmp">ICMP</h3>
+<ul>
+<li>ping：实际上使用的两个协议，一收一发（request、reply）；</li>
+<li>traceroute（路由追踪）：
+<ul>
+<li>较大端口号（端口不可达，到最终的路由的时候）；</li>
+<li>TTL值递增（返回值TTL超时，可根据此项得知下一个路由器的IP地址）；</li>
+<li>可用来进行路由器是否正常的检测；</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由">路由</h2>
+<ul>
+<li>路由器路由转发依赖的是路由表，路由表内记录的是目的IP；</li>
+<li>路由器的两个最主要的功能：
+<ul>
+<li>路由转发（传输数据）；</li>
+<li>选择转发的线路（RIP选择路由最少的路径、OSPF选择带宽最大的路径）；</li>
+</ul>
+</li>
+</ul>
 <h2 id="思科iso操作">思科ISO操作</h2>
 <h3 id="软件需要">软件需要</h3>
 <p>EVE-Student（虚拟机文件）、EVE工具、VMware Workstation、Broser、secureCRT或者Putty（SSH工具）；</p>
@@ -505,7 +544,8 @@ Switch：硬件实现数据转发；</p>
 2020.10.30：视频时间35min，博客写笔记；<br>
 2020.10.31：视频时间198min，博客写笔记；<br>
 2020.11.1：视频时间130min；<br>
-2020.11.2：视频时间72min，博客写笔记；</p>
+2020.11.2：视频时间72min，博客写笔记（停止，期间学习Java）；<br>
+2020.11.20：视频时间72min，博客写笔记（开始学习，冲冲冲！）；</p>
 ]]></content>
     </entry>
     <entry>
