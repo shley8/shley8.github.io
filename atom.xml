@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-11-21T02:39:55.137Z</updated>
+    <updated>2020-11-22T09:01:56.367Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -481,12 +481,84 @@ Switch：硬件实现数据转发；</p>
 </li>
 </ul>
 <h2 id="路由">路由</h2>
+<h3 id="路由的基础知识">路由的基础知识</h3>
 <ul>
 <li>路由器路由转发依赖的是路由表，路由表内记录的是目的IP；</li>
 <li>路由器的两个最主要的功能：
 <ul>
 <li>路由转发（传输数据）；</li>
 <li>选择转发的线路（RIP选择路由最少的路径、OSPF选择带宽最大的路径）；</li>
+</ul>
+</li>
+<li>EIGRP：思科私有协议，只在Cicso设备中有；</li>
+</ul>
+<h3 id="路由选择的方法">路由选择的方法</h3>
+<p>相同网络之间的路由选择</p>
+<ul>
+<li>AD（管理距离：不同的路由协议，有不同的AD值）和Metric（不同因素的Metric值不一样）是路由转发时候考虑的值，如果有两条网络目的相同的路由，优先选择AD值较小的，如果AD值一样，那么选择Metric值小的。</li>
+</ul>
+<p>不同网络之间的路由选择</p>
+<ul>
+<li>选择子网掩码最长的（确保数据传输的准确性）。</li>
+</ul>
+<h2 id="arpaddress-revolution-protocol地址解析协议">ARP（Address Revolution Protocol，地址解析协议）</h2>
+<p>通信时请求方通过ARP协议来确定对方的MAC地址。</p>
+<h3 id="四类arp">四类ARP</h3>
+<ul>
+<li>标准ARP：通信时请求方通过ARP协议来确定对方的MAC地址；</li>
+<li>无故ARP（免费ARP）：检测IP地址是否冲突（每当网络内有一个新的主机被分配IP地址时，自己给自己发送ARP协议，若是有主机回应的话，则存在主机IP地址冲突）；</li>
+<li>代理ARP（Cicso设备默认开启反向ARP、华为的设备默认关闭此功能）：路由会帮助PC实现跨网络的通信（善意的欺骗，路由会欺骗未配网关的PC）；</li>
+<li>反向ARP：MAC地址解析成IP地址，与标准ARP相反；
+<ul>
+<li>应用场景：
+<ul>
+<li>无盘操作系统安装；</li>
+<li>帧中继；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="包交付过程回顾">包交付过程（回顾）</h3>
+<ul>
+<li>数据在不同网络之间的传递过程；</li>
+<li>访问www.baidu.com的过程；</li>
+</ul>
+<h2 id="园区网campus企业级别的网络中等网络局域网-园区网-城区网">园区网（Campus，企业级别的网络，中等网络，局域网、园区网、城区网）</h2>
+<h3 id="园区网的三层架构">园区网的三层架构</h3>
+<ul>
+<li>企业级的网络架构：核心层（Core，转发流量，尽量不要在核心层配置很多的策略）-&gt;  汇聚层（Distribution，汇聚终端的流量）-&gt; 接入层（Access，终端）；</li>
+<li>一般防火墙放在路由器之后，路由器的性能比较好，能承受Internet上面的攻击；</li>
+</ul>
+<h3 id="解决广播域过大的问题vlanvirtual-local-area-network">解决广播域过大的问题（VLAN，Virtual Local Area Network）</h3>
+<ul>
+<li>VLAN的作用：分割广播域；</li>
+<li>VLAN的号：0<sub>4095个，一般不会超过200个（1</sub>1023代表基础VLAN，Cicso设备都支持；1024以上是高级VLAN，高级设备才支持）；</li>
+</ul>
+<h3 id=""></h3>
+<h3 id="-2"></h3>
+<h3 id="vtpvlan-trunk-protocolcisco私有协议">VTP（Vlan Trunk Protocol，Cisco私有协议）</h3>
+<ul>
+<li>功能：自动的创建和删除Vlan；</li>
+<li>三种模式：
+<ul>
+<li>Server；</li>
+<li>Client；</li>
+<li>透明模式；</li>
+</ul>
+</li>
+<li>三种模式之间的关系介绍：
+<ul>
+<li>Client模式能学习到Server端创建的Vlan，也能学习到Server端删除的Vlan；</li>
+<li>Client端不能自己创建Vlan；</li>
+<li>透明模式不能学习也不能创建自己的Vlan</li>
+</ul>
+</li>
+<li>配置VTP的步骤：
+<ul>
+<li>配置VTP的模式；</li>
+<li>配置一个VTP的域；</li>
+<li>配置VTP的版本；</li>
 </ul>
 </li>
 </ul>
@@ -545,7 +617,9 @@ Switch：硬件实现数据转发；</p>
 2020.10.31：视频时间198min，博客写笔记；<br>
 2020.11.1：视频时间130min；<br>
 2020.11.2：视频时间72min，博客写笔记（停止，期间学习Java）；<br>
-2020.11.20：视频时间72min，博客写笔记（开始学习，冲冲冲！）；</p>
+2020.11.20：视频时间72min，博客写笔记（开始学习，冲冲冲！）；<br>
+2020.11.21：视频时间107min，博客写笔记；<br>
+2020.11.22：视频时间，博客写笔记；</p>
 ]]></content>
     </entry>
     <entry>
