@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-11-22T09:01:56.367Z</updated>
+    <updated>2020-11-24T13:40:29.947Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -533,10 +533,19 @@ Switch：硬件实现数据转发；</p>
 <h3 id="解决广播域过大的问题vlanvirtual-local-area-network">解决广播域过大的问题（VLAN，Virtual Local Area Network）</h3>
 <ul>
 <li>VLAN的作用：分割广播域；</li>
-<li>VLAN的号：0<sub>4095个，一般不会超过200个（1</sub>1023代表基础VLAN，Cicso设备都支持；1024以上是高级VLAN，高级设备才支持）；</li>
+<li>VLAN的号：0-4095个，一般不会超过200个（1-1023代表基础VLAN，Cisco设备都支持；1024以上是高级VLAN，高级设备才支持）；</li>
 </ul>
-<h3 id=""></h3>
-<h3 id="-2"></h3>
+<h3 id="trunk链路">Trunk链路</h3>
+<ul>
+<li>简介：Access链路一条线只能走一个VLAN，Trunk链路一条线可以走很多VLAN；</li>
+<li>实现手段：802.1Q协议，在数组帧的源MAC地址和Type字段之间加入了4个字节（Byte）的Tag字段（里面含有VLAN号，12个bit，范围0-4095，跟VLAN号范围一致）；</li>
+</ul>
+<h3 id="本征vlannative-vlan只能配置在trunk接口上不用封装tag字段">本征VLAN（native vlan，只能配置在Trunk接口上，不用封装Tag字段）</h3>
+<ul>
+<li>DTP协议：Cisco协议，当一端接口未Trunk时，另一端接口自动协商成为Trunk；</li>
+<li>Trunk链路允许一个VLAN不用封装（因为当添加Tag字段后，FCS校验值也得重新封装，当传输数据过大时，会造成链路负担）；</li>
+<li>不建议使用，因为容易受到“VLAN跳跃式攻击”；</li>
+</ul>
 <h3 id="vtpvlan-trunk-protocolcisco私有协议">VTP（Vlan Trunk Protocol，Cisco私有协议）</h3>
 <ul>
 <li>功能：自动的创建和删除Vlan；</li>
@@ -561,6 +570,21 @@ Switch：硬件实现数据转发；</p>
 <li>配置VTP的版本；</li>
 </ul>
 </li>
+</ul>
+<h3 id="vlan间的路由">VLAN间的路由</h3>
+<p>*二层/三层转发的区别：<br>
+*  二层转发 -&gt; 根据数据帧中的目的MAC地址进行转发；<br>
+*  三层转发 -&gt; 根据目的IP地址进行转发；</p>
+<h3 id="多臂路由单臂路由很少用了">多臂路由/单臂路由（很少用了）；</h3>
+<ul>
+<li>单臂路由不同VLAN的数据传输的过程：PC1（VLAN10）-&gt;交换机（因为不同的VLAN，不能直接传输给VLAN20的PC2）-&gt; 路由器（俩子接口：一个VLAN10的子接口，一个VLAN20的子接口）-&gt; 交换机-&gt; PC2（VLAN20）</li>
+</ul>
+<h3 id="sviswith-virtual-interface交换机虚拟接口其实就是三层交换机">SVI（Swith Virtual Interface，交换机虚拟接口，其实就是三层交换机）</h3>
+<ul>
+<li>概念：能配置一个以上的SVI接口的交换机就叫三层交换机（二层交换机只能配一个）；</li>
+<li>交换机接口不能配IP地址，二层设备的接口是不能配IP地址的；路由器是三层设备，三层设备的接口可以配IP地址；</li>
+<li>只有当三层交换机的其他接口能传递VLAN的数据的时候，SVI接口才会up（自动up）；</li>
+<li>SVI接口的作用：可以把多个物理接口逻辑成一个接口（相当于网关），接入同一VLAN的不同IP的PC，可通过访问交换机上的SVI接口互相进行通信/数据传输，从而省略了路由器；这也是三层交换机替换二层交换机+路由器的主要原因；</li>
 </ul>
 <h2 id="思科iso操作">思科ISO操作</h2>
 <h3 id="软件需要">软件需要</h3>
@@ -619,7 +643,7 @@ Switch：硬件实现数据转发；</p>
 2020.11.2：视频时间72min，博客写笔记（停止，期间学习Java）；<br>
 2020.11.20：视频时间72min，博客写笔记（开始学习，冲冲冲！）；<br>
 2020.11.21：视频时间107min，博客写笔记；<br>
-2020.11.22：视频时间，博客写笔记；</p>
+2020.11.22：视频时间191min，博客写笔记；</p>
 ]]></content>
     </entry>
     <entry>
