@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-11-25T08:28:48.598Z</updated>
+    <updated>2020-11-25T11:08:00.747Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -689,6 +689,41 @@ Switch：硬件实现数据转发；</p>
 <li>多实例的生成树MSTP：802.1s；</li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<h3 id="ripv2动态路由协议">RIPv2（动态路由协议）</h3>
+<ul>
+<li>动态路由协议原理：路由器都是”大嘴吧“，会把自己的相邻网络告诉其他路由器；</li>
+<li>动态路由协议分类：
+<ul>
+<li>IGP（内部网关路由协议）：
+<ul>
+<li>距离矢量路由协议：
+<ul>
+<li>RIPv2：把自己的路由表发给邻居（公司用的比较多；收敛速度慢；传闻式的路由协议，不靠谱）；</li>
+<li>EIGRP；</li>
+</ul>
+</li>
+<li>链路状态路由协议：
+<ul>
+<li>OSPF：白自己的链路状态通告（LSA）发送给邻居（收敛速度快；靠谱；运营商用的比较多）；</li>
+<li>IS-IS；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>EGP（外部网关路由协议）：
+<ul>
+<li>BGP-4，MP-BGP；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RIPv2：
+<ul>
+<li>水平分割（当TTL为0时，停止发送路由信息）；</li>
+<li>路由的传递方向和数据的发送方向是相反的；</li>
 </ul>
 </li>
 </ul>

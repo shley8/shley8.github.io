@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第六章：学习周期两周（2020.10.28~2020.11.11） | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1606292639484">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1606302478580">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第六章：学习周期两周（2020.10.28~2020.11.11） | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -28,7 +28,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1606292639484" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1606302478580" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -88,7 +88,7 @@
                 2020-10-27
               </span>
               <span>
-                24 min read
+                25 min read
               </span>
               
             </div>
@@ -771,6 +771,41 @@ Switch：硬件实现数据转发；</p>
 </ul>
 </li>
 </ul>
+<h3 id="ripv2动态路由协议">RIPv2（动态路由协议）</h3>
+<ul>
+<li>动态路由协议原理：路由器都是”大嘴吧“，会把自己的相邻网络告诉其他路由器；</li>
+<li>动态路由协议分类：
+<ul>
+<li>IGP（内部网关路由协议）：
+<ul>
+<li>距离矢量路由协议：
+<ul>
+<li>RIPv2：把自己的路由表发给邻居（公司用的比较多；收敛速度慢；传闻式的路由协议，不靠谱）；</li>
+<li>EIGRP；</li>
+</ul>
+</li>
+<li>链路状态路由协议：
+<ul>
+<li>OSPF：白自己的链路状态通告（LSA）发送给邻居（收敛速度快；靠谱；运营商用的比较多）；</li>
+<li>IS-IS；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>EGP（外部网关路由协议）：
+<ul>
+<li>BGP-4，MP-BGP；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RIPv2：
+<ul>
+<li>水平分割（当TTL为0时，停止发送路由信息）；</li>
+<li>路由的传递方向和数据的发送方向是相反的；</li>
+</ul>
+</li>
+</ul>
 <h2 id="思科iso操作">思科ISO操作</h2>
 <h3 id="软件需要">软件需要</h3>
 <p>EVE-Student（虚拟机文件）、EVE工具、VMware Workstation、Broser、secureCRT或者Putty（SSH工具）；</p>
@@ -914,6 +949,7 @@ Switch：硬件实现数据转发；</p>
 <li><a href="#sviswith-virtual-interface%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%99%9A%E6%8B%9F%E6%8E%A5%E5%8F%A3%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AF%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA">SVI（Swith Virtual Interface，交换机虚拟接口，其实就是三层交换机）</a></li>
 <li><a href="#dhcpdanamic">DHCP（Danamic ）</a></li>
 <li><a href="#stp%E5%8D%8F%E8%AE%AE%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AE%E4%BA%8C%E5%B1%82%E5%8D%8F%E8%AE%AE">STP协议（生成树协议，二层协议）</a></li>
+<li><a href="#ripv2%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8D%8F%E8%AE%AE">RIPv2（动态路由协议）</a></li>
 </ul>
 </li>
 <li><a href="#%E6%80%9D%E7%A7%91iso%E6%93%8D%E4%BD%9C">思科ISO操作</a>
