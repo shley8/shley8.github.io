@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-11-28T03:02:39.766Z</updated>
+    <updated>2020-11-28T07:25:05.722Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -37,31 +37,19 @@
 <li>nmtui   调用；</li>
 </ul>
 <h3 id="networkmanaer管理网络命令行界面nmclinetworkmanager-commad-line-interface">NetworkManaer管理网络（命令行界面：nmcli，NetworkManager commad line interface）</h3>
+<h4 id="nmcli管理设备">nmcli管理设备</h4>
 <ul>
-<li>
-<p>nmcli device status： 看网卡和网卡配置文件的概述信息；</p>
-</li>
-<li>
-<p>nmcli device delete 【网卡名】：可以删除虚拟设备（网卡），不能删除物理设备（网卡）；</p>
-</li>
-<li>
-<p>nmcli device disconnect 【网卡名】：将会切断该网卡和当前配置文件的联系；</p>
-</li>
-<li>
-<p>nmcli device connect 【网卡名】：连接一个网卡的配置文件；</p>
-</li>
-<li>
-<p>nmcli device show 【网卡名】：可以查看网卡的块数/网卡的物理参数；</p>
-</li>
-<li>
-<p>网卡配置文件默认放在/etc/sysconfig/network-scripts/目录下；</p>
-</li>
-<li>
-<p>nmcli connection show ： 查看网卡配置文件的信息；</p>
-</li>
-<li>
-<p>nmcli connection add con-name 配置文件的名字 type 配置文件的类型  ifname 配置文件的网卡 ： 添加一个网卡配置文件；</p>
-</li>
+<li>nmcli device status： 看网卡和网卡配置文件的概述信息；</li>
+<li>nmcli device delete 【网卡名】：可以删除虚拟设备（网卡），不能删除物理设备（网卡）；</li>
+<li>nmcli device disconnect 【网卡名】：将会切断该网卡和当前配置文件的联系；</li>
+<li>nmcli device connect 【网卡名】：连接一个网卡的配置文件；</li>
+<li>nmcli device show 【网卡名】：可以查看网卡的块数/网卡的物理参数；</li>
+</ul>
+<h4 id="nmcli管理网卡配置文件">nmcli管理网卡配置文件</h4>
+<ul>
+<li>网卡配置文件默认放在/etc/sysconfig/network-scripts/目录下；</li>
+<li>nmcli connection show ： 查看网卡配置文件的信息；</li>
+<li>nmcli connection add con-name 配置文件的名字 type 配置文件的类型  ifname 配置文件的网卡 ： 添加一个网卡配置文件；</li>
 </ul>
 <pre><code class="language-bash">// 添加网卡配置文件
 [shley@rhel8 Desktop]$ nmcli connection  add con-name ens224 ifname ens224 type ethernet ipv4.address 1.1.1.1/24 ipv4.gateway 1.1.1.254 ipv4.dns 8.8.8.8 ipv4.method manual
@@ -99,9 +87,22 @@ virbr0  8fe3df8e-65c0-4c38-8706-602db2b280e8  bridge    virbr0
 <li>nmcli connection up：激活一个网卡配置文件；</li>
 <li>nmcli connection down：关闭一个网卡配置文件；</li>
 <li>nmcli connection reload：重新加载网卡配置文件（当手工修改网卡配置文件之后，通过reload重新加载配置文件，再使用nmcli connection up 【网卡配置文件】 命令激活网卡配置文件即可）；</li>
-<li>nmcli connection modify：修改网卡配置文件；</li>
+<li>nmcli connection modify：修改网卡配置文件（参数根add差不多）；</li>
 </ul>
-<h2 id=""></h2>
+<pre><code class="language-bash">// 设置此配置文件开机自启动
+nmcli connection modify ens224 connection.autoconnect yes
+</code></pre>
+<h2 id="vmware-workstation三种模式">VMware Workstation三种模式</h2>
+<h3 id="仅主机模式">仅主机模式</h3>
+<pre><code class="language-bash">    当通过vmware workstation添加一个仅主机类型的虚拟交换机之后，会立刻在windows上创建一个虚拟网卡连接到这个虚拟交换机。且仅主机类型的虚拟交换机上连接的所有虚拟机之间可以互相通信，但是这些连到仅主机上的虚拟机是无法访问外部网络的。
+</code></pre>
+<h3 id="nat模式">NAT模式</h3>
+<pre><code class="language-bash">    当通过vmware workstation添加一个nat类型的虚拟交换机之后，会立刻在windows上创建一个虚拟网卡，连接到这个虚拟交换机；且只能添加一个nat交换机；nat类型的交换机连接的所有虚拟机之间可以互相通信，且这些虚拟机可以借助nat虚拟交换机访问到物理网络能访问到的地方。
+</code></pre>
+<h3 id="桥接模式">桥接模式</h3>
+<pre><code class="language-bash">    桥接类型的虚拟交换机是虚拟化网络中应用最多类型的虚拟交换机。
+    当通过vmware workstation添加一个桥接类型的虚拟交换机过程中，必须要指定一个windows中的物理网卡，连接到这个桥接类型的虚拟交换机。
+</code></pre>
 ]]></content>
     </entry>
     <entry>
