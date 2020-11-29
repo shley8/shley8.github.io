@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第七章：网络管理 | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1606613605111">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1606619660001">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第七章：网络管理 | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -26,7 +26,7 @@ Network..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1606613605111" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1606619660001" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -86,7 +86,7 @@ Network..." />
                 2020-11-27
               </span>
               <span>
-                6 min read
+                7 min read
               </span>
               
             </div>
@@ -186,6 +186,10 @@ nmcli connection modify ens224 connection.autoconnect yes
 
     ip命令是新型的网络管理命令，目前已经基本取代了ifconfig命令。
 
+// 查看当前up状态的网卡信息
+ipconfig；
+ip address show；
+
 // 查看ens160网卡的信息
 ifconfig ens160；
 ip address show ens160；
@@ -194,10 +198,37 @@ ip address show ens160；
 routr -ne（以前版本查看路由的方式）；
 ip route show；
 
+// 设置网卡的IP地址
+ifconfig ens160 1.1.1.1/24；
+说明：
+    1. 由于NetworkManager的关系，并不算真的配置IP成功；
+    2.当使用nmcli connection down [配置文件名字]之后，再使用ifconfig ens160 1.1.1.1/24即可临时配置成功，当系统重启之后，临时配置会消失；
 
+庚老师解释：
+    1.如果当前网卡有NetworkManager的配置文件，那么ifconfig给网卡配置地址，相当于不生效；
+    2.如果当前网卡没有NetworkManager的配置文件，那么ifconfig给网卡配置地址，NetworkManager会临时给网卡分配一个配置文件，这个配置文件在重启的时候会失效；
 
+// 临时清空网卡的地址
+ip address flush ens160；
 
+// 将地址的配置加入NetworkManager配置文件中
+ip address add 1.1.1.1/24 dev ens160 ；
+
+// 启动/关闭网卡接口
+ifconfig ens160 up/down；
+ip link set up/down；
 </code></pre>
+<h3 id="netstatnetwork-status和sssockets-statitics命令-监控网络状态">netstat（network status）和ss（sockets statitics）命令 -&gt; 监控网络状态</h3>
+<p>用途：查看当前网络的网络状态；</p>
+<pre><code class="language-bash">// 通常说ip+port = sockets，sockets可以理解为对外提供的一个服务；
+
+// 常用的netstat参数
+netstat -tunlp（参数详解：TCP、UDP、以IP地址和端口号形式显示：速度很快，因为不需要通过DNS服务来解析域名、域名+协议的形式显示、PID：显示进程ID）；
+
+// ss命令
+准备替换netstat命令的命令；
+</code></pre>
+<h2 id="vlan">VLAN</h2>
 
               </div>
               <div class="toc-container">
@@ -228,8 +259,10 @@ ip route show；
 <li><a href="#%E7%BD%91%E8%B7%AF%E9%83%A8%E5%88%86%E7%9A%84%E5%91%BD%E4%BB%A4">网路部分的命令</a>
 <ul>
 <li><a href="#ifconfigip%E5%91%BD%E4%BB%A4">ifconfig/ip命令</a></li>
+<li><a href="#netstatnetwork-status%E5%92%8Csssockets-statitics%E5%91%BD%E4%BB%A4-%E7%9B%91%E6%8E%A7%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81">netstat（network status）和ss（sockets statitics）命令 -&gt; 监控网络状态</a></li>
 </ul>
 </li>
+<li><a href="#vlan">VLAN</a></li>
 </ul>
 </li>
 </ul>

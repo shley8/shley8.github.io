@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-11-29T01:33:27.089Z</updated>
+    <updated>2020-11-29T03:14:21.869Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -109,6 +109,10 @@ nmcli connection modify ens224 connection.autoconnect yes
 
     ip命令是新型的网络管理命令，目前已经基本取代了ifconfig命令。
 
+// 查看当前up状态的网卡信息
+ipconfig；
+ip address show；
+
 // 查看ens160网卡的信息
 ifconfig ens160；
 ip address show ens160；
@@ -117,10 +121,37 @@ ip address show ens160；
 routr -ne（以前版本查看路由的方式）；
 ip route show；
 
+// 设置网卡的IP地址
+ifconfig ens160 1.1.1.1/24；
+说明：
+    1. 由于NetworkManager的关系，并不算真的配置IP成功；
+    2.当使用nmcli connection down [配置文件名字]之后，再使用ifconfig ens160 1.1.1.1/24即可临时配置成功，当系统重启之后，临时配置会消失；
 
+庚老师解释：
+    1.如果当前网卡有NetworkManager的配置文件，那么ifconfig给网卡配置地址，相当于不生效；
+    2.如果当前网卡没有NetworkManager的配置文件，那么ifconfig给网卡配置地址，NetworkManager会临时给网卡分配一个配置文件，这个配置文件在重启的时候会失效；
 
+// 临时清空网卡的地址
+ip address flush ens160；
 
+// 将地址的配置加入NetworkManager配置文件中
+ip address add 1.1.1.1/24 dev ens160 ；
+
+// 启动/关闭网卡接口
+ifconfig ens160 up/down；
+ip link set up/down；
 </code></pre>
+<h3 id="netstatnetwork-status和sssockets-statitics命令-监控网络状态">netstat（network status）和ss（sockets statitics）命令 -&gt; 监控网络状态</h3>
+<p>用途：查看当前网络的网络状态；</p>
+<pre><code class="language-bash">// 通常说ip+port = sockets，sockets可以理解为对外提供的一个服务；
+
+// 常用的netstat参数
+netstat -tunlp（参数详解：TCP、UDP、以IP地址和端口号形式显示：速度很快，因为不需要通过DNS服务来解析域名、域名+协议的形式显示、PID：显示进程ID）；
+
+// ss命令
+准备替换netstat命令的命令；
+</code></pre>
+<h2 id="vlan">VLAN</h2>
 ]]></content>
     </entry>
     <entry>
