@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://shley8.github.io</id>
     <title>Shley8&apos;s Blogs</title>
-    <updated>2020-11-28T07:25:05.722Z</updated>
+    <updated>2020-11-29T01:33:27.089Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shley8.github.io"/>
     <link rel="self" href="https://shley8.github.io/atom.xml"/>
@@ -102,6 +102,24 @@ nmcli connection modify ens224 connection.autoconnect yes
 <h3 id="桥接模式">桥接模式</h3>
 <pre><code class="language-bash">    桥接类型的虚拟交换机是虚拟化网络中应用最多类型的虚拟交换机。
     当通过vmware workstation添加一个桥接类型的虚拟交换机过程中，必须要指定一个windows中的物理网卡，连接到这个桥接类型的虚拟交换机。
+</code></pre>
+<h2 id="网路部分的命令">网路部分的命令</h2>
+<h3 id="ifconfigip命令">ifconfig/ip命令</h3>
+<pre><code class="language-bash">    ifconfig命令是一个早期的网络管理命令，在未来可能会被移除，目前已经有一些Linux的发行版本默认不带ifconfig命令，但是可以通过软件包（net-tools）的安装给这个命令装回来。
+
+    ip命令是新型的网络管理命令，目前已经基本取代了ifconfig命令。
+
+// 查看ens160网卡的信息
+ifconfig ens160；
+ip address show ens160；
+
+// 查看路由信息
+routr -ne（以前版本查看路由的方式）；
+ip route show；
+
+
+
+
 </code></pre>
 ]]></content>
     </entry>

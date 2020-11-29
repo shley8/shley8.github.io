@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>第七章：网络管理 | Shley8&#39;s Blogs</title>
-<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1606548303460">
+<link rel="shortcut icon" href="https://shley8.github.io/favicon.ico?v=1606613605111">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://shley8.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="第七章：网络管理 | Shley8&#39;s Blogs - Atom Feed" href="https://shley8.github.io/atom.xml">
@@ -26,7 +26,7 @@ Network..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://shley8.github.io">
-  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1606548303460" alt="">
+  <img class="avatar" src="https://shley8.github.io/images/avatar.png?v=1606613605111" alt="">
   </a>
   <h1 class="site-title">
     Shley8&#39;s Blogs
@@ -86,7 +86,7 @@ Network..." />
                 2020-11-27
               </span>
               <span>
-                5 min read
+                6 min read
               </span>
               
             </div>
@@ -180,6 +180,24 @@ nmcli connection modify ens224 connection.autoconnect yes
 <pre><code class="language-bash">    桥接类型的虚拟交换机是虚拟化网络中应用最多类型的虚拟交换机。
     当通过vmware workstation添加一个桥接类型的虚拟交换机过程中，必须要指定一个windows中的物理网卡，连接到这个桥接类型的虚拟交换机。
 </code></pre>
+<h2 id="网路部分的命令">网路部分的命令</h2>
+<h3 id="ifconfigip命令">ifconfig/ip命令</h3>
+<pre><code class="language-bash">    ifconfig命令是一个早期的网络管理命令，在未来可能会被移除，目前已经有一些Linux的发行版本默认不带ifconfig命令，但是可以通过软件包（net-tools）的安装给这个命令装回来。
+
+    ip命令是新型的网络管理命令，目前已经基本取代了ifconfig命令。
+
+// 查看ens160网卡的信息
+ifconfig ens160；
+ip address show ens160；
+
+// 查看路由信息
+routr -ne（以前版本查看路由的方式）；
+ip route show；
+
+
+
+
+</code></pre>
 
               </div>
               <div class="toc-container">
@@ -205,6 +223,11 @@ nmcli connection modify ens224 connection.autoconnect yes
 <li><a href="#%E4%BB%85%E4%B8%BB%E6%9C%BA%E6%A8%A1%E5%BC%8F">仅主机模式</a></li>
 <li><a href="#nat%E6%A8%A1%E5%BC%8F">NAT模式</a></li>
 <li><a href="#%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F">桥接模式</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BD%91%E8%B7%AF%E9%83%A8%E5%88%86%E7%9A%84%E5%91%BD%E4%BB%A4">网路部分的命令</a>
+<ul>
+<li><a href="#ifconfigip%E5%91%BD%E4%BB%A4">ifconfig/ip命令</a></li>
 </ul>
 </li>
 </ul>
